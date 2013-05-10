@@ -2,31 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="stylesNotif.css" rel="stylesheet" type="text/css" />
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/perfect-scrollbar.js"></script>
- <link href="/css/perfect-scrollbar.css" rel="stylesheet">
-  <script>
+<link href="/css/stylesNotif.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/perfect-scrollbar.js"></script>
+<link href="/css/perfect-scrollbar.css" rel="stylesheet">
+<script>
    $(document).ready(function() {
       $('.estilo').perfectScrollbar();
    });
 	
 </script>
-<title>Documento sin título</title>
+<title>Notificaciones Dinámicas</title>
 </head>
 
 <body>
-
-<div class="user">
-Notificacion sobre usuario
-</div>
-<div class="grupo">
-Notificacion sobre servidor
-</div>
-<div class="estilo">
-<p>hola</p>
-<p>hola</p>
-<p>hola</p><p>hola</p>
-</div>
+<fieldset class="user">
+  <legend>JotaGé</legend>
+  <div class="texto">Has sido retado por M.Cabesa</div>
+  <img class="imgNot" src="/img/icRet.png" />
+  <input class="botNot" type="button" value="Face the challenge!" method="post" action=""/>
+  <input class="botNot" type="button" value="NO!" method="post" action=""/>
+</fieldset>
+<fieldset class="grupo">
+  <legend>Grupo: BASTec</legend>
+  <div class="texto">¡Tu grupo BASTec ha ganado un reto!</div>
+  <div class="guay">A M.Cabesa le parece guay</div>
+  <img class="imgNot" src="/img/feelLikeASir.png" />
+</fieldset>
+<fieldset class="user">
+  <legend>JotaGé</legend>
+  <div class="texto">M.Cabesa quiere ser tu amigo</div>
+  <img class="imgNot" src="/img/alone.png" />
+  <form>
+    <input class="botNot" type="button" value="Si, quiero" method="post" action=""/>
+    <input class="botNot" type="button" value="Ni de broma" method="post" action=""/>
+  </form>
+</fieldset>
 </body>
 </html>

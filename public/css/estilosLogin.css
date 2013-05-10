@@ -1,0 +1,166 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: url(19281_funny_memes.jpg);
+	font-size: 14px;
+	color: #3a2127;
+}
+/*--------------------------------------------------------------*/
+/*Cabecera*/
+#cabecera {
+	color:#F60;
+	text-shadow: 0px 3px 3px rgba(0,0,0,0.5), 0px -1px 1px rgba(0,0,0,0.4);
+	position:relative;
+	height:139px;
+	margin-bottom:20px;
+}
+#titulo {
+	font-weight:900;
+	font-family:"Lucida Console", Monaco, monospace;
+	font-size:45px;
+	position:absolute;
+	top:17%;
+	left:30%;
+	right:42%;
+	text-align:center;
+	height:90px;
+}
+#cabecera #torcido {
+	-webkit-transform: rotate(-25deg);
+	-moz-transform: rotate(-25deg);
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-0.27);
+	font-size:30px;
+	position:absolute;
+	left:165px;
+	top:8%;
+}
+.container {
+	padding: 0px 25%;
+}
+.container > header {
+	display: block;
+	text-align: center;
+}
+
+/*--------------------------------------------------------------*/
+/*Formulario login*/
+/*--------------------------------------------------------------*/
+.form {
+	float: right;
+	background:#f1f1f1;
+	width:400px;
+	margin-bottom:5%;
+	padding-left:50px;
+	padding-top:20px;
+	padding-bottom:10px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.7);
+}
+.form fieldset {
+	border:0px;
+	padding:0px;
+	margin:0px;
+}
+.form p.contact {
+	font-size: 12px;
+	margin:0px 0px 10px 0;
+	line-height: 14px;
+	font-family:Arial, Helvetica;
+}
+/*Tamaño base de las entradas:*/
+.form input {
+	width: 350px;
+	padding:1%;
+}
+.form label {
+	color: #000;
+	font-weight:bold;
+	font-size: 12px;
+	font-family:Arial, Helvetica;
+	padding:1%;
+}
+/*Para los campos de entrada de texto:*/
+.form input, textarea {
+	background-color: rgba(255, 255, 255, 0.4);
+	border: 1px solid rgba(122, 192, 0, 0.15);
+	padding: 7px;
+	font-family: Keffeesatz, Arial;
+	color: #4b4b4b;
+	font-size: 14px;
+	-webkit-border-radius: 5px;
+	margin-bottom: 15px;
+	margin-top: -10px;
+}
+/*Estilos de las opciones seleccionables*/
+.form input:focus, textarea:focus {
+	border: 1px solid #ff5400;
+	background-color: rgba(255, 255, 255, 1);
+}
+.form .select-style {
+	-webkit-appearance: button;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-padding-end: 20px;
+	-webkit-padding-start: 2px;
+	-webkit-user-select: none;
+	background-image: url(../../../Desktop/Teleco/4%C2%BA%20de%20Teleco/Segundo%20cuatrimestre/AAP/ftc/public/css/images/select-arrow.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-position: center right;
+	background-repeat: no-repeat;
+	border: 0px solid #FFF;
+	color: #555;
+	font-size: inherit;
+	margin:0;
+	overflow: hidden;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para el botón de login*/
+/*--------------------------------------------------------------*/
+.form input.buttom {
+	background:#F63;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color:#FFF;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	box-shadow: 0 1px 3px #999;
+	text-shadow: 0 -1px 1px #222;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+.form input.buttom:hover {
+	background-color:#F60;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para Formulario de registro*/
+/*--------------------------------------------------------------*/
+#home-registro {
+	float: left;
+	width:200px;
+	height:100px;
+	padding:0 10px 10px 10px;
+	text-align:center;
+}
+#regbuttom {
+	width:180px;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	position: relative;
+	background: #4b8df9;
+	text-align:center;
+}
+#regbuttom:hover {
+	background-color: #2a78f6;
+}

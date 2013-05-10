@@ -1,25 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../public/js/jquery.roundabout.js"></script>
+<script src="/js/jquery.roundabout.js"></script>
 <script>
    $(document).ready(function() {
       $('ul').roundabout();
    });
-	
+	function cambio(url){
+		centro.location.href = url;
+	}
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Página principal FTC</title>
-<link href="../public/css/styles.css" rel="stylesheet" type="text/css" />
+<title>Face The Challenge</title>
+<link href="/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="cabecera">
-  <div id="titulo"> FACE
+  <div id="titulo" onclick="javascript:cambio('indexNotificaciones')"> FACE
     <div id="torcido">the</div>
     <p>CHALLENGE</p>
   </div>
-  <div id="usuario"><img src="../public/img/Recorte.jpg" />
+  <div id="usuario"><img src="/img/Recorte.jpg" />
     <div id="datos">
       <li>Usuario: JotaGé</li>
       <li>Grupo: BASTec</li>
@@ -33,7 +35,7 @@
 <div class="clsImagen">           
   <div class="clsContenedor">                   
     <div class="clsTitulo">                        
-      <h2>Reto</h2>
+      <a href="Reto"><h2>Reto</h2></a>
     </div>
     <div class="clsTitulo">                        
       <h2>Invitar</h2>
@@ -52,22 +54,47 @@
     </div>
   </div>
 </div>
-<iframe class="centroIz" src="indexNotificaciones.html"> hola </iframe>
+<iframe id="centro" class="centroIz" src="indexNotificaciones"> hola </iframe>
 <ul>
-  <li>Ranking usuarios dia:
-    <ol>
-      <li>JotaGé           1302934293</li>
-      <li>Pilar            1234</li>
-      <li>Jose Montes      100</li>
-      <li>Manu             69</li>
-      <li>Antonio          0</li>
-    </ol>
+  <li>
+    <div class="titRank">Usuarios hoy</div>
+    <p>1. JotaGé           130293</p>
+    <p>2. Pilar            1234</p>
+    <p>3. Jose Montes      100</p>
+    <p>4. Manu             69</p>
+    <p>5. Antonio          0</p>
   </li>
-  <li>Ranking grupos dia:</li>
-  <li>Ranking usuarios mes:</li>
-  <li>Ranging grupos mes:</li>
-  <li>Ranking usuarios global:</li>
-  <li>Ranking grupos global:</li>
+  <li>
+    <div class="titRank">Grupos hoy</div>
+    <p>1. Edgebox          12312</p>
+    <p>2. BASTec            155</p>
+  </li>
+  <li>
+    <div class="titRank">Usuarios mes</div>
+    <p>1. JotaGé           13029393</p>
+    <p>2. Pilar            1234</p>
+    <p>3. Jose Montes      100</p>
+    <p>4. Manu             69</p>
+    <p>5. Antonio          0</p>
+  </li>
+  <li>
+    <div class="titRank">Grupos mes</div>
+    <p>1. BASTec           234264343</p>
+    <p>2. Edgebox          34536</p>
+  </li>
+  <li>
+    <div class="titRank">Usuarios global</div>
+    <p>1. JotaGé           234234234</p>
+    <p>2. Pilar            23423</p>
+    <p>3. Jose Montes      674</p>
+    <p>4. Manu             69</p>
+    <p>5. Antonio          0</p>
+  </li>
+  <li>
+    <div class="titRank">Grupos global</div>
+    <p>1. BASTec           9999999999</p>
+    <p>2. Edgebox          3453645</p>
+  </li>
 </ul>
 </body>
 </html>
