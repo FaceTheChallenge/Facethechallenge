@@ -7,7 +7,8 @@
       $('ul').roundabout();
    });
 	function cambio(url){
-		centro.location.href = url;
+		var iframe=$('#centro');
+		iframe.attr('src',url);
 	}
 </script>
 <head>
@@ -40,7 +41,7 @@
     <div class="clsTitulo">                        
       <h2>Invitar</h2>
     </div>
-    <div class="clsTitulo">                        
+    <div class="clsTitulo" onclick="javascript:cambio('indexGrupos.html')">                        
       <h2>Grupo</h2>
     </div>
     <div class="clsTitulo">                        

@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+/* Reiniciando algunos de los estilos CSS*/
+ a, ul, li, nav {
+	border: 0;
+	font-family: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+	text-decoration:none;
+	display: block;
+}
+.container {
+	padding-top:40px;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para el botón de opciones*/
+/*--------------------------------------------------------------*/
+#opBoton {
+	float:right;
+	background: #4b8df9;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fbf7f7;
+	text-decoration: none;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	box-shadow: 0 1px 3px #999;
+	text-shadow: 0 -1px 1px #222;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+	width:100px;
+}
+#opBoton:hover {
+	background-color: #2a78f6;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para el menú de opciones*/
+/*--------------------------------------------------------------*/
+#opciones {
+	position:absolute;
+	width:100%;
+	z-index:1;
+	list-style-position:inside;
+	
+}
+/* Estilo para el ul principal */
+#opciones ul li {
+	list-style:none;
+	list-style-position:inside;
+}
+/*Configuración al pasar el mouse encima del boton de opciones*/
+#opciones ul li a:hover {
+	background-color: #43AEF2;
+	color:white;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+#opciones li:hover ul {
+	display:block;
+}
+
+/*Ocultamos las opciones del menú*/
+.menuOpc {
+	
+	width:250px;
+	height:90px;
+	padding:5px 0px 5px 0px;
+	float:right;
+	display:none;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 4px 4px 4px 4px;
+	border-style: solid;
+	border-color:#CCC;
+	border-width: 1px;
+	background-clip: padding-box;
+	background:#FFF;
+	text-decoration:none;
+	/*Situamos el submenú debajo del botón*/
+	margin-top:25px;
+	margin-right:-120px;
+}
+.menuOpc li a {
+	display: block;
+	line-height: 23px;
+	text-decoration: none;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight:normal;
+	font-size: 14px;
+	color:#000;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	-webkit-transition: color .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out;
+	-o-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+	z-index:1;
+}
+
+/*Con display:none permanece escondido, 
+position:absolute le dice que aparezca bajo la opción padre. 
+Con top y right se dice a que altura de la opción debe aparecer.
+z-index:1; se indica que sobreponga a cualquier otro elemento*/
