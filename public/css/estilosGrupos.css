@@ -13,8 +13,10 @@
 	text-decoration:none;
 	display: block;
 }
-.container {
+#container {
 	padding-top:40px;
+	width:850px;
+	height:470px;
 }
 /*--------------------------------------------------------------*/
 /*Estilo para el botón de opciones*/
@@ -54,7 +56,6 @@
 	width:100%;
 	z-index:1;
 	list-style-position:inside;
-	
 }
 /* Estilo para el ul principal */
 #opciones ul li {
@@ -71,12 +72,10 @@
 #opciones li:hover ul {
 	display:block;
 }
-
 /*Ocultamos las opciones del menú*/
 .menuOpc {
-	
 	width:250px;
-	height:90px;
+	height:110px;
 	padding:5px 0px 5px 0px;
 	float:right;
 	display:none;
@@ -108,8 +107,38 @@
 	transition: color .2s ease-in-out;
 	z-index:1;
 }
-
 /*Con display:none permanece escondido, 
 position:absolute le dice que aparezca bajo la opción padre. 
 Con top y right se dice a que altura de la opción debe aparecer.
 z-index:1; se indica que sobreponga a cualquier otro elemento*/
+/*--------------------------------------------------------------*/
+/*Modificaciones para los formularios*/
+/*--------------------------------------------------------------*/
+.form {
+	box-shadow:none;
+	width:auto;
+}
+.form input.name {
+	width:200px;
+	margin:0 10px 0 10px;
+}
+.form input.password {
+	width:200px;
+	margin:0 10px 0 10px;
+}
+.form input.buttom {
+	width:220px;
+	float:right;
+	margin-right:20px;
+}
+#invitarB {
+	width:80px;
+}
+#opcionesGrupos {
+	background:none;
+	height:auto;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.7);
+}
