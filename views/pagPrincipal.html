@@ -2,13 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../public/js/jquery.roundabout.js"></script>
-<script>
+<script>      
    $(document).ready(function() {
       $('ul').roundabout();
+	  cambio('indexNotificaciones.html','570px');
    });
-	function cambio(url){
+   
+	function cambio(url,s){
 		var iframe=$('#centro');
 		iframe.attr('src',url);
+		iframe.attr('height',s);
+		$('#clsImagen').css('height',s);
 	}
 </script>
 <head>
@@ -18,7 +22,7 @@
 </head>
 <body>
 <div id="cabecera">
-  <div id="titulo" onclick="javascript:cambio('indexNotificaciones.html')"> FACE
+  <div id="titulo" onclick="javascript:cambio('indexNotificaciones.html','570px')"> FACE
     <div id="torcido">the</div>
     <p>CHALLENGE</p>
   </div>
@@ -32,15 +36,15 @@
   </div>
 </div>
          
-<div class="clsImagen">           
+<div class="clsImagen" id="clsImagen">           
   <div class="clsContenedor">                   
-    <div class="clsTitulo">                        
-      <a href="Reto.html"><h2>Reto</h2></a>
+    <div class="clsTitulo" onclick="javascript:cambio('Reto.html','1000px')">                        
+      <h2>Reto</h2>
     </div>
     <div class="clsTitulo">                        
       <h2>Invitar</h2>
     </div>
-    <div class="clsTitulo" onclick="javascript:cambio('indexGrupos.html')">                        
+    <div class="clsTitulo" onclick="javascript:cambio('indexGrupos.html','600px')">                        
       <h2>Grupo</h2>
     </div>
     <div class="clsTitulo">                        
@@ -54,7 +58,7 @@
     </div>
   </div>
 </div>
-<iframe id="centro" class="centroIz" src="indexNotificaciones.html"> hola </iframe>
+<iframe id="centro" class="centroIz" scrolling="no" src="indexNotificaciones.html"> hola </iframe>
 <ul>
   <li>
     <div class="titRank">Usuarios hoy</div>
