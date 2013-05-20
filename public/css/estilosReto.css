@@ -10,7 +10,7 @@ header {
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background:url(fondo.jpg);
+	background:url("../img/fondo.jpg");
 	font-size: 14px;
 	color: #3a2127;
 }
