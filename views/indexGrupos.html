@@ -4,14 +4,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<!-- Cargamos hojas de estilo y ficheros JavaScript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<link href="../public/css/estilosFormulario.css" rel="stylesheet" type="text/css">
-	<link href="../public/css/estilosGrupos.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../public/css/jquery.confirm.css"/>
+	<link href="../public/css/estilosFormulario.css" rel="stylesheet" type="text/css"/>	
 	<link href="../public/css/stylesNotif.css" rel="stylesheet" type="text/css" />
+    <link href="../public/css/estilosGrupos.css" rel="stylesheet" type="text/css" />
+    <script src="../public/js/jquery.confirm.js"></script>
+    <script src="../public/js/confirmacion.js"></script>
 	<script>
 			function cambio(url){
 				var iframe=$('#container');
 				iframe.attr('src',url);
-				console.log('HOLASS');
 			}
 	</script>
 	</head>
@@ -19,15 +21,17 @@
 	<body>
 <nav id="opciones">
       <ul>
+      
     <li><a href="#" id="opBoton">Opciones</a>
           <ul class="menuOpc">
         <li onclick="javascript:cambio('gruposModAd.html')"><a href="#">Cambiar Administrador</a></li>
         <li onclick="javascript:cambio('gruposPref.html')"><a href="#">Preferencias retos</a></li>
         <li onclick="javascript:cambio('gruposAdComp.html')"><a href="#">Añadir componente</a></li>
         <li onclick="javascript:cambio('gruposDelComp.html')"><a href="#">Eliminar componente</a></li>
-        <li><a href="#">Eliminar grupo</a></li>
+        <li><a href="#" class="confirm">Eliminar grupo</a></li>
       </ul>
         </li>
+        <a href="#" id="nombreGrupo" onclick="javascript:cambio('gruposInfo.html')">Principal</a>
   </ul>
     </nav>
 <!-- frameborder="0" no dibuje borde, scrolling="no" no aparezcan barras scroll -->

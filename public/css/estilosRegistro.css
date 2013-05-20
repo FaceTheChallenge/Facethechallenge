@@ -39,10 +39,8 @@ body {
 .bar-top {
 	font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
 	line-height: 24px;
-	font-size: 11px;
 	text-transform: uppercase;
 	position: relative;
-	box-shadow: 3px 0px 5px rgba(0,0,0,0.2);
 	text-shadow: 0px 1px 1px #fff;
 	text-decoration: none;
 }

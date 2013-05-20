@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 /* Reiniciando algunos de los estilos CSS*/
- a, ul, li, nav {
+a, ul, li, nav {
 	border: 0;
 	font-family: inherit;
 	font-style: inherit;
@@ -12,11 +12,24 @@
 	vertical-align: baseline;
 	text-decoration:none;
 	display: block;
+	color:#000;
 }
 #container {
+	height:1000px;
 	padding-top:40px;
 	width:850px;
-	height:470px;
+}
+#nombreGrupo{
+	float:left;
+	margin-left:40px;
+	color:#000;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 24px;
+	text-transform: uppercase;
+	position: relative;
+	text-shadow: 0px 2px 2px #666;
+	text-decoration: none;
+	
 }
 /*--------------------------------------------------------------*/
 /*Estilo para el botón de opciones*/
@@ -48,6 +61,7 @@
 #opBoton:hover {
 	background-color: #2a78f6;
 }
+
 /*--------------------------------------------------------------*/
 /*Estilo para el menú de opciones*/
 /*--------------------------------------------------------------*/
