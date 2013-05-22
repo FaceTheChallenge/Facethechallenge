@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../public/js/jquery.roundabout.js"></script>
-
 <script>      
    $(document).ready(function() {
       $('ul').roundabout();
@@ -36,7 +35,7 @@
     <input id="boton" type="button" value="Perfil"/>
   </div>
 </div>
-         
+ 
 <div class="clsImagen" id="clsImagen">           
   <div class="clsContenedor">                   
     <div class="clsTitulo" onclick="javascript:cambio('Reto.html','1000px')">                        
@@ -57,6 +56,19 @@
   </div>
 </div>
 <iframe id="centro" class="centroIz" scrolling="no" src="indexNotificaciones.html"> hola </iframe>
+<div id="buscador">
+  <form class="searchform">
+    <select class="searchfield" id="tipobusqueda">
+      <option value="0">Usuario</option>
+      <option value="1">Grupo</option>
+      <option value="2">Ranking grupo</option>
+      <option value="3">Puntos usuario</option>
+      <option value="3">Puntos grupo</option>
+    </select>
+    <input class="searchfield" type="text">
+    <input class="searchbutton" type="button" value="Go">
+  </form>
+</div>
 <ul>
   <li>
     <div class="titRank">Usuarios hoy</div>
