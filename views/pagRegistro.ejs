@@ -27,7 +27,7 @@ CHALLENGE
     <h1>Página de registro</h1>
   </header>
   <div  class="form">
-    <form id="registroform"  name="registroform" onsubmit="return comprobar()">
+    <form id="registroform"  name="registroform">
       <p class="contact">
         <label for="name">Nombre completo</label>
       </p>
@@ -50,7 +50,7 @@ CHALLENGE
       <input type="password" id="repassword" name="repassword" required="">
       <br>
       <label>Sexo</label>
-      <select class="select-style gender" name="gender">
+      <select class="select-style gender" id="gender">
         <option value="m">Masculino</option>
         <option value="f">Femenino</option>
       </select>
@@ -59,7 +59,7 @@ CHALLENGE
       <fieldset>
         <label>Cumpleaños</label>
         <label class="month">
-          <select class="select-style" name="BirthMonth">
+          <select class="select-style" id="BirthMonth">
           <option value="">Mes</option>
           <option  value="01">Enero</option>
           <option value="02">Febrero</option>
@@ -76,21 +76,22 @@ CHALLENGE
         </label>
         </select>
         <label>Día
-          <input class="birthday" maxlength="2" name="BirthDay"  placeholder="Día" required="">
+          <input class="birthday" maxlength="2" id="BirthDay"  placeholder="Día" required="">
         </label>
         <label>Año
-          <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Año" required="">
+          <input class="birthyear" maxlength="4" id="BirthYear" placeholder="Año" required="">
         </label>
       </fieldset>
       <br>
       <p class="contact">
         <label for="phone">Móvil</label>
-        <input id="phone" name="phone" placeholder="666666666" required="" type="text">
+        <input id="phone" id="phone" placeholder="666666666" required="" type="text">
         <br>
         <br>
-        <input class="buttom" name="submit" id="submit" tabindex="5" value="Registrarse" type="submit" >
+        <input type="button" name="registra" id="registra" tabindex="5" value="Registrarse" onClick="obtenValores()" />
     </form>
   </div>
 </div>
+
 </body>
 </html>

@@ -57,6 +57,34 @@ app.get('/indexNotificaciones',function(req,res){
 	res.render("indexNotificaciones",{});
 });
 
+app.get('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
+		console.log("Vamos a hacer la inserción");
+		
+		var datos = {'nombre':req.params.nombre,
+		'sexo':req.params.sexo,
+		'fechaNacimiento':req.params.fechaNacimiento,
+		'correo':req.params.correo,
+		'nombreUsuario':req.params.nombreUsuario,
+		'password':req.params.password,
+		'movil':req.params.movil,
+		'retosSuperados':0,
+		'retosFallidos':0,
+		'retosTotales':0,
+		'puntuacion':0,
+		'retosActivos':0,
+		'notificaciones':1,
+		'privacidad':2,
+		'fechaRegistro':req.params.fechaRegistro,
+		'grupo':'null'};
+		
+				db.insert({'docs':datos},function (error,http_body,http_headers) {
+			     console.log(http_body);
+			 }
+		       );
+/*		var html = "<html><head><meta http-equiv='Refresh' content='2' url='http://localhost:3000/pagInicio' /></head><body>Redireccionando....</body></html>";*/
+});
+
 app.listen(3000);
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 console.log("Servidor listo");
