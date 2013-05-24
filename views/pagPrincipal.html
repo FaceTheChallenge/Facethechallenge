@@ -14,13 +14,27 @@
 		iframe.attr('height',s);
 		$('#clsImagen').css('height',s);
 	}
+	function ranking() {
+	    var request = new XMLHttpRequest();
+  		var peticion_str = 'http://localhost:3000/ranking/usuarios/dia';
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 ) {
+				console.log(request);
+				var json;
+				eval ( 'json = '+ request.responseText );
+				console.log(json);
+  			}	
+		};
+  		request.send(null);
+	}
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Face The Challenge</title>
 <link href="../public/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body onload="ranking()">
 <div id="cabecera">
   <div id="titulo" onclick="javascript:cambio('indexNotificaciones.html','570px')"> FACE
     <div id="torcido">the</div>
@@ -70,47 +84,47 @@
   </form>
 </div>
 <div id="lista">
-<ul>
-  <li>
-    <div class="titRank">Usuarios hoy</div>
-    <p>1. JotaGé           130293</p>
-    <p>2. Pilar            1234</p>
-    <p>3. Jose Montes      100</p>
-    <p>4. Manu             69</p>
-    <p>5. Antonio          0</p>
-  </li>
-  <li>
-    <div class="titRank">Grupos hoy</div>
-    <p>1. Edgebox          12312</p>
-    <p>2. BASTec            155</p>
-  </li>
-  <li>
-    <div class="titRank">Usuarios mes</div>
-    <p>1. JotaGé           13029393</p>
-    <p>2. Pilar            1234</p>
-    <p>3. Jose Montes      100</p>
-    <p>4. Manu             69</p>
-    <p>5. Antonio          0</p>
-  </li>
-  <li>
-    <div class="titRank">Grupos mes</div>
-    <p>1. BASTec           234264343</p>
-    <p>2. Edgebox          34536</p>
-  </li>
-  <li>
-    <div class="titRank">Usuarios global</div>
-    <p>1. JotaGé           234234234</p>
-    <p>2. Pilar            23423</p>
-    <p>3. Jose Montes      674</p>
-    <p>4. Manu             69</p>
-    <p>5. Antonio          0</p>
-  </li>
-  <li>
-    <div class="titRank">Grupos global</div>
-    <p>1. BASTec           9999999999</p>
-    <p>2. Edgebox          3453645</p>
-  </li>
-</ul>
+  <ul>
+    <li>
+      <div class="titRank">Usuarios hoy</div>
+      <p>1. JotaGé           130293</p>
+      <p>2. Pilar            1234</p>
+      <p>3. Jose Montes      100</p>
+      <p>4. Manu             69</p>
+      <p>5. Antonio          0</p>
+    </li>
+    <li>
+      <div class="titRank">Grupos hoy</div>
+      <p>1. Edgebox          12312</p>
+      <p>2. BASTec            155</p>
+    </li>
+    <li>
+      <div class="titRank">Usuarios mes</div>
+      <p>1. JotaGé           13029393</p>
+      <p>2. Pilar            1234</p>
+      <p>3. Jose Montes      100</p>
+      <p>4. Manu             69</p>
+      <p>5. Antonio          0</p>
+    </li>
+    <li>
+      <div class="titRank">Grupos mes</div>
+      <p>1. BASTec           234264343</p>
+      <p>2. Edgebox          34536</p>
+    </li>
+    <li>
+      <div class="titRank">Usuarios global</div>
+      <p>1. JotaGé           234234234</p>
+      <p>2. Pilar            23423</p>
+      <p>3. Jose Montes      674</p>
+      <p>4. Manu             69</p>
+      <p>5. Antonio          0</p>
+    </li>
+    <li>
+      <div class="titRank">Grupos global</div>
+      <p>1. BASTec           9999999999</p>
+      <p>2. Edgebox          3453645</p>
+    </li>
+  </ul>
 </div>
 </body>
 </html>

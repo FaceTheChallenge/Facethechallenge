@@ -82,7 +82,31 @@ app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:pass
 			     console.log(http_body);
 			 }
 		       );
-/*		var html = "<html><head><meta http-equiv='Refresh' content='2' url='http://localhost:3000/pagInicio' /></head><body>Redireccionando....</body></html>";*/
+});
+
+app.get('/ranking/:usuarios/:dia',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
+		db.view('ranking','usuariosDia', function(key, value,rereduce) {
+			var keys=new Array;
+			var values=new Array;
+			for(var r in value.rows){
+				keys[r]=value.rows[r].key;
+				values[r]=value.rows[r].value;
+			}
+			var objeto=new Object;
+			objeto.id="busquedaA";
+			objeto.type="RankGrup";
+			var ind=keys.length;
+			for (var i in keys){
+				eval('objeto.nombre'+ind+'=values[i]');
+				eval('objeto.punt'+ind+'=keys[i]');
+				ind--;
+			}
+			json=JSON.stringify(objeto);
+			console.log(json);
+			res.contentType('application/json');
+			res.send(json);
+		});
 });
 
 app.listen(3000);
