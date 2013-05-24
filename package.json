@@ -1,7 +1,0 @@
-{
- "name":"pag inicio FtC",
-  "version":"0.0.1",
-  "dependencies":{
-      "express":"","ejs": ""
-  }
-}

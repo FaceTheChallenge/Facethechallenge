@@ -57,7 +57,7 @@ app.get('/indexNotificaciones',function(req,res){
 	res.render("indexNotificaciones",{});
 });
 
-app.get('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
+app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		console.log("Vamos a hacer la inserción");
 		
