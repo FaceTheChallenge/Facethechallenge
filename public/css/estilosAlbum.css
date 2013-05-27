@@ -1,0 +1,186 @@
+@charset "utf-8";
+/* CSS Document */
+/* Reiniciando algunos de los estilos CSS*/
+a, ul, li, nav {
+	border: 0;
+	font-family: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+	text-decoration:none;
+	color:#000;
+}
+article, aside, details, figure, nav, section {
+	display: block;
+}
+#container {
+	height:900px;
+	padding-top:40px;
+	width:850px;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para cada subsección multimedia*/
+/*--------------------------------------------------------------*/
+.titulo {
+	position: absolute;
+	margin-left:40px;
+	color:#000;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 24px;
+	text-transform: uppercase;
+	position: relative;
+	text-shadow: 0px 2px 2px #666;
+	text-decoration: none;
+}
+figure {
+	margin-left:150px;
+}
+img {
+	position:relative;
+	width: 250px;
+	height: 170px;
+}
+#multimedia li {
+	display:inline-block;
+	width: 250px;
+	height: 170px;
+}
+#multimedia li:hover .leyenda {
+	height: 25px;
+}
+#multimedia .leyenda {
+	position: absolute;
+	font: 16px/25px 'Open Sans Condensed', 'Arial Narrow', sans-serif;
+	color: rgb(255, 255, 255);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 0px;
+	padding: 0px 20px 0px 5px;
+	background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.7);
+	transition: height 400ms ease-in-out 0s;
+	-webkit-transition: height 400ms ease-in-out;
+	-moz-transition: height 400ms ease-in-out;
+	-ms-transition: height 400ms ease-in-out;
+	-o-transition: height 400ms ease-in-out;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para el botón de filtro
+/*--------------------------------------------------------------*/
+#filtro {
+	float:right;
+	background: #4b8df9;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fbf7f7;
+	text-decoration: none;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	box-shadow: 0 1px 3px #999;
+	text-shadow: 0 -1px 1px #222;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	font-family:Verdana, Geneva, sans-serif;
+	width:50px;
+}
+#filtro:hover {
+	background-color: #2a78f6;
+}
+/*--------------------------------------------------------------*/
+/*Estilos para los sliders*/
+/*--------------------------------------------------------------*/
+#multimedia .previo {
+	position:absolute;
+	float:left;
+	background: url("../img/prev.png");
+	width:33px;
+	height:33px;
+	top:140px;
+}
+#multimedia .siguiente {
+	position:absolute;
+	float:right;
+	background: url("../img/next.png");
+	width:33px;
+	height:33px;
+	top:140px;
+	/*Se añade un desplazamiento para estar al borde*/
+	left:800px;
+}
+/*--------------------------------------------------------------*/
+/*Estilo para el menú de album*/
+/*--------------------------------------------------------------*/
+#album {
+	position:absolute;
+	width:95%;
+	text-align:center;
+	z-index:1;
+	list-style-position:inside;
+}
+/* Estilo para el ul principal */
+#album ul li {
+	list-style:none;
+	list-style-position:inside;
+}
+/*Configuración al pasar el mouse encima del boton de album*/
+#album ul li a:hover {
+	background-color: #43AEF2;
+	color:white;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+#album li:hover ul {
+	display:block;
+}
+/*Ocultamos las album del menú*/
+.menuFiltro {
+	text-align:center;
+	width:120px;
+	height:90px;
+	padding:5px 0px 5px 0px;
+	float:right;
+	display:none;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 4px 4px 4px 4px;
+	border-style: solid;
+	border-color:#CCC;
+	border-width: 1px;
+	background-clip: padding-box;
+	background:#FFF;
+	text-decoration:none;
+	/*Situamos el submenú debajo del botón*/
+	margin-top:25px;
+	margin-right:-70px;
+}
+.menuFiltro li a {
+	display: block;
+	line-height: 23px;
+	text-decoration: none;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight:normal;
+	font-size: 14px;
+	color:#000;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	-webkit-transition: color .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out;
+	-o-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+	z-index:1;
+}
+/*Con display:none permanece escondido, 
+position:absolute le dice que aparezca bajo la opción padre. 
+Con top y right se dice a que altura de la opción debe aparecer.
+z-index:1; se indica que sobreponga a cualquier otro elemento*/
