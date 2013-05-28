@@ -2,51 +2,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../public/css/jquery.confirm.css"/>
 <link href="../public/css/estilosAlbum.css" rel="stylesheet" type="text/css" />
+<script src="../public/js/jquery.confirm.js"></script>
+<script src="../public/js/confirmacion.js"></script>
 </head>
 
 <body>
 <div id="multimedia">
-  <div id="fotos">
-    <p class="titulo"> Fotos </p>
-    <ul>
-      <a class="previo"></a>
-      <li>
-        <figure> <img src="http://i44.tinypic.com/2zfogg2.jpg"></img>
-          <div class="leyenda"> Hugh </div>
-        </figure>
-      </li>
-      <li>
-        <figure> <img src="http://i44.tinypic.com/2zfogg2.jpg"></img>
-          <div class="leyenda"> Hugh </div>
-        </figure>
-      </li>
-      <a class="siguiente"></a>
-    </ul>
-  </div>
-  <div id="videos">
-    <p class="titulo"> Vídeos </p>
-    <ul>
-      <li>
-        <figure>
-          <iframe class="video" type="text/html" width="400" height="300" src="http://www.youtube.com/embed/yYFZUNiukbg" frameborder="0"></iframe>
-          <div class="leyenda"> Pepelu </div>
-        </figure>
-      </li>
-    </ul>
-  </div>
-  <div id="audio">
-    <p class="titulo"> Audio </p>
-    <ul>
-      <li>
-        <figure> 
-          <!-- Para el audio podemos pedir que sean de cloudsound u otra pag, en firefox no se escucha por ahora, pero en chrome si-->
-          <audio src="../public/audio/risa.wav" controls> </audio>
-          <div class="leyenda"> Risa helio </div>
-        </figure>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li><a href="#" class="confirm">
+      <figure> <img src="http://i44.tinypic.com/2zfogg2.jpg"></img>
+        <div class="leyenda"> Hugh </div>
+      </figure>
+      </a> </li>
+    <li>
+      <figure> <img src="http://i44.tinypic.com/2zfogg2.jpg"></img>
+        <div class="leyenda"> Hugh </div>
+      </figure>
+    </li>
+    <li>
+      <figure >
+        <iframe class="video" type="text/html" width="130" height="100" src="http://www.youtube.com/embed/yYFZUNiukbg?wmode=transparent" frameborder="0"></iframe>
+        <div class="leyenda"> Pepelu </div>
+      </figure>
+    </li>
+    <li>
+      <figure> <img width="120" src="../public/img/play.jpg"></img> 
+        <!-- Para el audio podemos pedir que sean de cloudsound u otra pag, en firefox no se escucha por ahora, pero en chrome si-->
+        <audio src="../public/audio/risa.wav" controls> </audio>
+        <div class="leyenda"> Risa helio </div>
+      </figure>
+    </li>
+  </ul>
 </div>
 </body>
 </body>

@@ -35,18 +35,26 @@ article, aside, details, figure, nav, section {
 	text-shadow: 0px 2px 2px #666;
 	text-decoration: none;
 }
-figure {
-	margin-left:150px;
-}
+
 img {
-	position:relative;
-	width: 250px;
-	height: 170px;
+	position:absolute;
+	width: 130px;
+	height: 100px;
 }
+iframe{
+	position:absolute;
+	width: 130px;
+	height: 100px;
+}
+audio{
+	position:absolute;
+	width: 130px;
+	height: 100px;
+	}
 #multimedia li {
 	display:inline-block;
-	width: 250px;
-	height: 170px;
+	width: 130px;
+	height: 100px;
 }
 #multimedia li:hover .leyenda {
 	height: 25px;
