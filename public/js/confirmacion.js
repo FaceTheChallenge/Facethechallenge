@@ -19,5 +19,18 @@ $(document).ready(function(){
 		});
 		
 	});
-	
+	//Si pulsamos sobre un elemento de la clase visor se inicia este código:
+	$('.visor').click(function(){
+		console.log('Intento  ' +  $(this).find('.contenido').html());
+		$.visor({
+			'contenido'	: $(this).find('.contenido').html(),
+			'buttons'	: {
+				'Cerrar'	: {
+					'class'	: 'gray',
+					'action': function(){}	
+				}
+				
+			}
+		});
+	});	
 });
