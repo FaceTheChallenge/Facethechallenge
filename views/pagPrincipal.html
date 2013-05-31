@@ -2,11 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../public/js/jquery.roundabout.js"></script>
+<script src="../public/js/funciones.js"></script>
 <script>      
    $(document).ready(function() {
       $('ul').roundabout();
 	  cambio('indexNotificaciones.html','570px');
+	  ranking();
+	  obtenerGravatar();
    });
+   
+   	function obtenerGravatar(){
+		$('#imUs').attr('src', 'http://www.gravatar.com/avatar/' + md5('joselillom91@hotmail.com'));
+	};
    
 	function cambio(url,s){
 		var iframe=$('#centro');
@@ -34,13 +41,13 @@
 <title>Face The Challenge</title>
 <link href="../public/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
-<body onload="ranking()">
+<body>
 <div id="cabecera">
   <div id="titulo" onclick="javascript:cambio('indexNotificaciones.html','570px')"> FACE
     <div id="torcido">the</div>
     <p>CHALLENGE</p>
   </div>
-  <div id="usuario"><img src="../public/img/Recorte.jpg" />
+  <div id="usuario"><img id="imUs" src="../public/img/Recorte.jpg" />
     <div id="datos">
       <li>Usuario: JotaGé</li>
       <li>Grupo: BASTec</li>
