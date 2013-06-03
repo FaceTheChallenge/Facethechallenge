@@ -16,7 +16,7 @@ function comprobar()
    return true;
 }
 
-	function registrar(){
+	function obtenValores(){
 	//Voy a ir recogiendo todos los valores del campo para enviarlos como una cadena JSON
 		var nombre = document.getElementById('name').value;
 		var email = document.getElementById('email').value;
@@ -59,13 +59,14 @@ function comprobar()
 		if (pass==repass){
 		var peticion = "http://localhost:3000/registrar/"+nombre+"/"+sex+"/"+nacimiento+"/"+email+"/"+user+"/"+pass+"/"+fechaRegistro+"/"+movil;
 
-		request.open('POST',peticion,true);
-		request.onreadystatechange=alert('¡¡Bienvenido!!\n\n¡¡Eres un valiente!!');
-		var html = "<body><script type='text/javascript'>window.location='http://localhost:3000/pagInicio';</script></body>";
-		request.send(html);
+		request.open('GET',peticion,true);
+		request.onreadystatechange=alert('¡¡Bienvenido!!  ¡¡Eres un valiente!!\n\n Espera mientras te redireccionamos al inicio...');
+		request.send(null);
+		setTimeout('document.location = "http://localhost:3000/pagInicio"',2000);
 
 		}
 		else{alert('Eh!! La clave no coincide!!');}
+		
 		
 }
 
