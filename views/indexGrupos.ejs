@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!-- Cargamos hojas de estilo y ficheros JavaScript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.confirm.css"/>
+	<link href="css/estilosFormulario.css" rel="stylesheet" type="text/css"/>	
+	<link href="css/stylesNotif.css" rel="stylesheet" type="text/css" />
+    <link href="css/estilosGrupos.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.confirm.js"></script>
+    <script src="js/confirmacion.js"></script>
+	<script>
+			function cambio(url){
+				var iframe=$('#container');
+				iframe.attr('src',url);
+			}
+	</script>
+	</head>
+
+	<body>
+<nav id="opciones">
+      <ul>
+      
+    <li><a href="#" id="opBoton">Opciones</a>
+          <ul class="menuOpc">
+        <li onclick="javascript:cambio('gruposModAd')"><a href="#">Cambiar Administrador</a></li>
+        <li onclick="javascript:cambio('gruposPref')"><a href="#">Preferencias retos</a></li>
+        <li onclick="javascript:cambio('gruposAdComp')"><a href="#">Añadir componente</a></li>
+        <li onclick="javascript:cambio('gruposDelComp')"><a href="#">Eliminar componente</a></li>
+        <li><a href="#" class="confirm">Eliminar grupo</a></li>
+      </ul>
+        </li>
+        <a href="#" id="nombreGrupo" onclick="javascript:cambio('gruposInfo')">Principal</a>
+  </ul>
+    </nav>
+<!-- frameborder="0" no dibuje borde, scrolling="no" no aparezcan barras scroll -->
+<iframe id="container" scrolling="no" frameborder="0" src="gruposInfo"> </iframe>
+</body>
+</html>

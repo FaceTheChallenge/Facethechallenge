@@ -5,9 +5,10 @@
 <title>Registro de nuevo usuario</title>
 
 <!-- Cargamos hojas de estilo y ficheros JavaScript -->
-<link href="css/estilosRegistro.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="js/comprobar.js" language="JavaScript"> </script>
+<link href="css/estilosFormulario.css" rel="stylesheet" type="text/css">
+<link href="css/estilosRegistro.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -15,9 +16,8 @@
 <div class="bar-top"> <a href="pagInicio">
   <div id="titulo"> FACE
     <div id="torcido">the</div>
-CHALLENGE
-  </div>
-</a> </div>
+    CHALLENGE </div>
+  </a> </div>
 
 <!--/ Contenedor de toda la página -->
 <div class="container"> 
@@ -27,39 +27,39 @@ CHALLENGE
     <h1>Página de registro</h1>
   </header>
   <div  class="form">
-    <form id="registroform"  name="registroform" action="pagInicio" >
-      <p class="contact">
-        <label for="name">Nombre completo</label>
-      </p>
-      <input id="name" name="name" placeholder="Nombre" required="" tabindex="1" type="text">
-      <p class="contact">
-        <label for="email">Email</label>
-      </p>
-      <input id="email" name="email" placeholder="ejemplo@domain.com" required="" type="email">
-      <p class="contact">
-        <label for="username">Nombre de usuario</label>
-      </p>
-      <input id="username" name="username" placeholder="Nick" required="" tabindex="2" type="text">
-      <p class="contact">
-        <label for="password">Contraseña</label>
-      </p>
-      <input type="password" id="password" name="password" required="">
-      <p class="contact">
-        <label for="repassword">Confirmar contraseña</label>
-      </p>
-      <input type="password" id="repassword" name="repassword" required="">
-      <br>
-      <label>Sexo</label>
-      <select class="select-style gender" id="gender">
-        <option value="m">Masculino</option>
-        <option value="f">Femenino</option>
-      </select>
-      <br>
-      <br>
-      <fieldset>
-        <label>Cumpleaños</label>
-        <label class="month">
-          <select class="select-style" id="BirthMonth">
+  <form id="registroform"  name="registroform" onsubmit="return obtenValores()">
+    <p class="contact">
+      <label for="name">Nombre completo</label>
+    </p>
+    <input id="name" name="name" placeholder="Nombre" required="" type="text">
+    <p class="contact">
+      <label for="email">Email</label>
+    </p>
+    <input id="email" name="email" placeholder="ejemplo@domain.com" type="email">
+    <p class="contact">
+      <label for="username">Nombre de usuario</label>
+    </p>
+    <input id="username" name="username" placeholder="Nick" required="" type="text">
+    <p class="contact">
+      <label for="password">Contraseña</label>
+    </p>
+    <input type="password" id="password" name="password" required="">
+    <p class="contact">
+      <label for="repassword">Confirmar contraseña</label>
+    </p>
+    <input type="password" id="repassword" name="repassword" required="">
+    <br>
+    <label>Sexo</label>
+    <select class="select-style" name="genero">
+      <option value="m">Masculino</option>
+      <option value="f">Femenino</option>
+    </select>
+    <br>
+    <br>
+    <fieldset>
+      <label>Cumpleaños</label>
+      <label class="mes">
+        <select class="select-style" name="cumple">
           <option value="">Mes</option>
           <option  value="01">Enero</option>
           <option value="02">Febrero</option>
@@ -73,25 +73,108 @@ CHALLENGE
           <option value="10">Octubre</option>
           <option value="11">Noviembre</option>
           <option value="12" >Diciembre</option>
-        </label>
         </select>
-        <label>Día
-          <input class="birthday" maxlength="2" id="BirthDay"  placeholder="Día" required="">
-        </label>
-        <label>Año
-          <input class="birthyear" maxlength="4" id="BirthYear" placeholder="Año" required="">
-        </label>
-      </fieldset>
+      </label>
+      <label>Día
+        <input class="birthday" maxlength="2" name="BirthDay"  placeholder="Día" required="">
+      </label>
+      <label>Año
+        <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Año" required="">
+      </label>
+    </fieldset>
+    <br>
+    <p class="contact">
+      <label for="phone">Móvil</label>
+      <input id="phone" name="phone" placeholder="666666666" required="" type="text">
       <br>
-      <p class="contact">
-        <label for="phone">Móvil</label>
-        <input id="phone" id="phone" placeholder="666666666" required="" type="text">
-        <br>
-        <br>
-        <input type="button" name="registra" id="registra" tabindex="5" value="Registrarse" onClick="obtenValores()" />
-    </form>
-  </div>
+      <br>
+      <input class="buttom" name="submit" id="submit" value="Registrarse" type="submit" >
+  </form>
 </div>
+</div>
+</body>
+</html>
+
+<script type='text/javascript' >
+
+	function obtenValores(){
+	//Voy a ir recogiendo todos los valores del campo para enviarlos como una cadena JSON
+	alert('Estoy aqui!!');
+		var nombre = document.getElementById('name').value;
+		var email = document.getElementById('email').value;
+		var user = document.getElementById('username').value;
+		var pass = document.getElementById('password').value;
+		var repass = document.getElementById('repassword').value;
+
+		var sex = document.getElementById('gender').value;
+		
+		//Pongo el sexo del usuario como texto
+		if (sex == "m"){sex = "Masculino";}
+		else{sex = "Femenino";}
+
+		var mes = document.getElementById('BirthMonth').value;
+		var dia = document.getElementById('BirthDay').value;
+		var anio = document.getElementById('BirthYear').value;
+		
+		//Pongo el mes con nombre
+		if (mes == "01"){mes = "Enero";}
+		if (mes == "02"){mes = "Febrero";}
+		if (mes == "03"){mes = "Marzo";}
+		if (mes == "04"){mes = "Abril";}
+		if (mes == "05"){mes = "Mayo";}
+		if (mes == "06"){mes = "Junio";}
+		if (mes == "07"){mes = "Julio";}
+		if (mes == "08"){mes = "Agosto";}
+		if (mes == "09"){mes = "Septiembre";}
+		if (mes == "10"){mes = "Octubre";}
+		if (mes == "11"){mes = "Noviembre";}
+		if (mes == "12"){mes = "Diciembre";}
+		
+		//Obtengo la fecha de nacimiento completa
+		var nacimiento = dia + "/" + mes + "/" + anio;
+		
+		var movil = document.getElementById('phone').value;
+		
+		alert('Voy a coger la fecha');
+		fechaRegistro = "";
+		//var fechaRegistro = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+		alert('Fecha cogida')
+		
+		alert('El pass es: '+pass+' y el repass: '+repass);
+		
+		//Ahora, para enviar los datos, compruebo por ejemplo que el password está bien repetido:
+		if (pass==repass){
+		alert('Los passwords coinciden');
+		
+		var respuesta = {"_id":user,"nombre":nombre,"email":email,"pass":pass,"sexo":sex,"fechaNacimiento":nacimiento};
+		alert('va va');
+		alert(respuesta);
+		alert('ahi va ahi va');
+				
+		db.insert(respuesta, function(error,http_body,http_headers){
+		
+		if(error){alert('Por alguna razón, no se puede, error: '+error);}
+		
+		else{
+			console.log(http_body);
+			console.log("Ya está hecha la peticion");
+		}
+		
+		});
+		alert('Voy a hacer la insercion!!!');
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
+		var json={"nombre":nombre,"sexo":sex,"fechaNacimiento":nacimiento,"correo":email,"nombreUsuario":user,"contraseña":pass,"retosSuperados":"null","retosFallidos":"null","retosTotales":"null","puntuacion":"null","retosActivos":"null","notificaciones":"1","privacidad":"2","fechaRegistro":fechaRegistro,"grupo":"null"};
+				db.insert( { 'docs' : json},function (error,http_body,http_headers) {
+			     console.log(http_body);
+			 }
+		       );
+		}
+		else{alert('Eh!! La clave no coincide!!');}
+		
+		
+}
+</script>
+
 
 </body>
 </html>

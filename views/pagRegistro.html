@@ -5,19 +5,19 @@
 <title>Registro de nuevo usuario</title>
 
 <!-- Cargamos hojas de estilo y ficheros JavaScript -->
-<link href="../public/css/estilosRegistro.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script src="/js/comprobar.js" language="JavaScript"> </script>
+<script src="../public/js/comprobar.js" language="JavaScript"> </script>
+<link href="../public/css/estilosFormulario.css" rel="stylesheet" type="text/css">
+<link href="../public/css/estilosRegistro.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 <!-- Barra superior -->
-<div class="bar-top"> <a href="pagInicio">
+<div class="bar-top"> <a href="pagInicio.html">
   <div id="titulo"> FACE
     <div id="torcido">the</div>
-CHALLENGE
-  </div>
-</a> </div>
+    CHALLENGE </div>
+  </a> </div>
 
 <!--/ Contenedor de toda la página -->
 <div class="container"> 
@@ -27,8 +27,7 @@ CHALLENGE
     <h1>Página de registro</h1>
   </header>
   <div  class="form">
-<<<<<<< HEAD
-  <form id="registroform"  name="registroform" onsubmit="return comprobar()">
+  <form id="registroform"  name="registroform" onsubmit="return obtenValores()">
     <p class="contact">
       <label for="name">Nombre completo</label>
     </p>
@@ -87,74 +86,14 @@ CHALLENGE
     <p class="contact">
       <label for="phone">Móvil</label>
       <input id="phone" name="phone" placeholder="666666666" required="" type="text">
-=======
-    <form id="registroform"  name="registroform" onsubmit="obtenValores()">
-      <p class="contact">
-        <label for="name">Nombre completo</label>
-      </p>
-      <input id="name" name="name" placeholder="Nombre" required="" tabindex="1" type="text">
-      <p class="contact">
-        <label for="email">Email</label>
-      </p>
-      <input id="email" name="email" placeholder="ejemplo@domain.com" required="" type="email">
-      <p class="contact">
-        <label for="username">Nombre de usuario</label>
-      </p>
-      <input id="username" name="username" placeholder="Nick" required="" tabindex="2" type="text">
-      <p class="contact">
-        <label for="password">Contraseña</label>
-      </p>
-      <input type="password" id="password" name="password" required="">
-      <p class="contact">
-        <label for="repassword">Confirmar contraseña</label>
-      </p>
-      <input type="password" id="repassword" name="repassword" required="">
->>>>>>> Registro completo
       <br>
       <br>
-<<<<<<< HEAD
       <input class="buttom" name="submit" id="submit" value="Registrarse" type="submit" >
   </form>
 </div>
-=======
-      <br>
-      <fieldset>
-        <label>Cumpleaños</label>
-        <label class="month">
-          <select class="select-style" name="BirthMonth">
-          <option value="">Mes</option>
-          <option  value="01">Enero</option>
-          <option value="02">Febrero</option>
-          <option value="03" >Marzo</option>
-          <option value="04">Abril</option>
-          <option value="05">Mayo</option>
-          <option value="06">Junio</option>
-          <option value="07">Julio</option>
-          <option value="08">Agosto</option>
-          <option value="09">Septiembre</option>
-          <option value="10">Octubre</option>
-          <option value="11">Noviembre</option>
-          <option value="12" >Diciembre</option>
-        </label>
-        </select>
-        <label>Día
-          <input class="birthday" maxlength="2" name="BirthDay"  placeholder="Día" required="">
-        </label>
-        <label>Año
-          <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Año" required="">
-        </label>
-      </fieldset>
-      <br>
-      <p class="contact">
-        <label for="phone">Móvil</label>
-        <input id="phone" name="phone" placeholder="666666666" required="" type="text">
-        <br>
-        <br>
-        <input class="buttom" name="submit" id="submit" tabindex="5" value="Registrarse" type="submit" >
-    </form>
-  </div>
->>>>>>> Registro completo
 </div>
+</body>
+</html>
 
 <script type='text/javascript' >
 

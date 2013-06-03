@@ -60,6 +60,40 @@ app.get('/indexNotificaciones',function(req,res){
 	res.render("indexNotificaciones",{});
 });
 
+app.get('/albumInfo',function(req,res){
+	res.render("albumInfo",{});
+});
+
+app.get('/gruposAdComp',function(req,res){
+	res.render("gruposAdComp",{});
+});
+
+app.get('/gruposDelComp',function(req,res){
+	res.render("gruposDelComp",{});
+});
+
+app.get('/gruposInfo',function(req,res){
+	res.render("gruposInfo",{});
+});
+
+app.get('/gruposModAd',function(req,res){
+	res.render("gruposModAd",{});
+});
+
+app.get('/gruposPref',function(req,res){
+	res.render("gruposPref",{});
+});
+
+app.get('/indexAlbum',function(req,res){
+	res.render("indexAlbum",{});
+});
+
+app.get('/indexGrupos',function(req,res){
+	res.render("indexGrupos",{});
+});
+
+
+
 app.post('/inicSesion',function(req,res){
 	req.session.ses=req.body;
 	req.session.save(function(err){});
@@ -141,6 +175,7 @@ app.get('/login/:usu/:pas',function(req,res){
 		});
 });
 
-app.listen(3000);
+// Escuchamos o en el puerto que se nos indique desde el servidor o en el 3000 (para pruebas locales)
+app.listen(process.env.PORT || 3000);
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 console.log("Servidor listo");

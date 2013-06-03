@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<!-- Cargamos hojas de estilo y ficheros JavaScript -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/filtrar.js" language="JavaScript"> </script>
+<link href="css/estilosAlbum.css" rel="stylesheet" type="text/css" />
+<title>Álbum multimedia de retos</title>
+</head>
+
+<body>
+<body>
+<nav id="album">
+  <ul>
+    <li><a href="#" id="filtro">Filtrar</a>
+      <ul class="menuFiltro">
+        <li onclick=""><a href="#">Todo</a></li>
+        <li onclick="filtrarFotos()"><a href="#">Fotos</a></li>
+        <li onclick=""><a href="#">Vídeo</a></li>
+        <li onclick=""><a href="#">Audio</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<!-- frameborder="0" no dibuje borde, scrolling="no" no aparezcan barras scroll -->
+<iframe id="container" scrolling="no" frameborder="0" src="AlbumInfo"> </iframe>
+</body>
+</html>
