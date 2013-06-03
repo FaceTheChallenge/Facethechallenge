@@ -60,9 +60,6 @@ app.get('/indexNotificaciones',function(req,res){
 	res.render("indexNotificaciones",{});
 });
 
-<<<<<<< HEAD
-app.get('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
-=======
 app.post('/inicSesion',function(req,res){
 	req.session.ses=req.body;
 	req.session.save(function(err){});
@@ -70,7 +67,6 @@ app.post('/inicSesion',function(req,res){
 });
 
 app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
->>>>>>> origin/gestionSesiones
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		console.log("Vamos a hacer la inserción");
 		
