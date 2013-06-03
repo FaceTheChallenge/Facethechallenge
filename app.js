@@ -109,6 +109,30 @@ app.get('/ranking/:usuarios/:dia',function(req,res){
 		});
 });
 
+app.get('/login/:usu/:pas',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
+		db.view('usuarios','listar', function(key, value,rereduce) {
+			var estado=null;
+			if(value!==null){
+				for(var r in value.rows){
+					if(value.rows[r].key==req.params.usu && value.rows[r].value==req.params.pas){
+						estado='ok';
+						res.send({'state':'true'});
+						console.log({'state':'true'});
+						break;
+					}
+				}
+				if(estado!=='ok'){
+					res.send({'state':'false'});
+					console.log({'state':'false'});
+				}
+			}else{
+				res.send({'state':'false'});
+				console.log({'state':'false'});	
+			}
+		});
+});
+
 app.listen(3000);
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 console.log("Servidor listo");
