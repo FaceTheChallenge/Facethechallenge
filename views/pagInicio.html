@@ -1,5 +1,43 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+function login() {
+		var us=$('#username').val();
+		var pas=$('#password').val();
+		if (window.XMLHttpRequest) 
+		{ 
+   		 	var request = new XMLHttpRequest();     // Firefox, Safari, ...
+		} 
+		else if (window.ActiveXObject)   // Internet Explorer 
+		{
+    		var request = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+  		var peticion_str = 'http://localhost:3000/login/'+us+'/'+pas;
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 && request.status == 200) {
+				if(request.responseText!==""){
+					var json;	
+					eval ( 'json = '+ request.responseText );
+					peticion_str = 'http://localhost:3000/inicSesion';
+					request.onreadystatechange= function(){
+						if ( request.readyState == 4 && request.status == 200) {
+							if(request.responseText=='ok'){
+								$(location).attr('href','pagPrincipal.html'); 
+							}
+						};
+					};
+					request.open('POST', peticion_str , true);
+					request.send(json);
+				}else{
+					alert('El usuario no existe');
+				}
+  			}
+		};
+		request.send(null);
+	}
+</script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Bienvenido, logueate</title>
@@ -30,15 +68,14 @@
       <input type="password" id="password" name="password" required="">
       <br>
       <br>
-      <a href="pagPrincipal.html">
-      <input class="buttom" name="submit" id="submit" value="¡Soy un valiente!" type="submit">
+      <input class="buttom" name="submit" id="submit" value="¡Soy un valiente!" type="button" onClick="login()">
       </a>
     </form>
   </div>
   <div  class="form" id="home-registro">
     <form id="regnuevoform"  name="regnuevoform">
       <h4>Registrate y comienza tu reto</h4>
-      <a href="pagRegistro.html">
+      <a href="pagRegistro">
       <input class="buttom" name="submit" id="regbuttom" value="Registrarse">
       </a>
     </form>

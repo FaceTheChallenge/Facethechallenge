@@ -4,7 +4,7 @@ que nos retorna un objeto con el servidor web que utilizaremos para
 escuchar las peticiones y responderlas
 */
 var express = require('express');
-var app = module.exports = express.createServer();
+var app = express();
 
 //Configuración:
 /*
@@ -22,6 +22,9 @@ app.configure(function(){
 	//express.bodyParser() es utilizado para el parseo de los post (sean json o no) y nos devuelve el resultado del parsea accesible vía la variable req.body
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+	//para el uso de sesiones
+	app.use(express.cookieParser());
+	app.use(express.session({secret: 'sesion'}));
 	//uso de app.router que contiene todas las rutas definidas, y realiza consulta de rutas basándose en la URL de la solicitud actual y el método HTTP
     app.use(app.router);
 	//Declaramos el directorio desde donde proveemos nuestro contenido estático, esto nos permite acceder a nustros recursos (dentro del directorio public) directamente referenciandolo como <link href="/css/style.css" rel="stylesheet" type="text/css"></link>
@@ -57,7 +60,17 @@ app.get('/indexNotificaciones',function(req,res){
 	res.render("indexNotificaciones",{});
 });
 
+<<<<<<< HEAD
 app.get('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
+=======
+app.post('/inicSesion',function(req,res){
+	req.session.ses=req.body;
+	req.session.save(function(err){});
+	res.send('ok');
+});
+
+app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
+>>>>>>> origin/gestionSesiones
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		console.log("Vamos a hacer la inserción");
 		
@@ -106,6 +119,29 @@ app.get('/ranking/:usuarios/:dia',function(req,res){
 			console.log(json);
 			res.contentType('application/json');
 			res.send(json);
+		});
+});
+
+app.get('/login/:usu/:pas',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
+		db.view('usuarios','listar', function(key, value) {
+			var estado=null;
+			if(value!==null){
+				for(var r in value.rows){
+					if(value.rows[r].key.nombreUsuario==req.params.usu && value.rows[r].key.password==req.params.pas){
+						estado='ok';
+						res.contentType('application/json');
+						res.send(value.rows[r].key);
+						break;
+					}
+				}
+				if(estado!=='ok'){
+					res.send(null);
+				}
+			}else{
+				res.contentType('application/json');
+				res.send(null);	
+			}
 		});
 });
 
