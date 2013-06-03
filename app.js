@@ -117,16 +117,19 @@ app.get('/login/:usu/:pas',function(req,res){
 				for(var r in value.rows){
 					if(value.rows[r].key==req.params.usu && value.rows[r].value==req.params.pas){
 						estado='ok';
+						res.contentType('application/json');
 						res.send({'state':'true'});
 						console.log({'state':'true'});
 						break;
 					}
 				}
 				if(estado!=='ok'){
+					res.contentType('application/json');
 					res.send({'state':'false'});
 					console.log({'state':'false'});
 				}
 			}else{
+				res.contentType('application/json');
 				res.send({'state':'false'});
 				console.log({'state':'false'});	
 			}
