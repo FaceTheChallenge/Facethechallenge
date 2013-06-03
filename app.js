@@ -22,6 +22,9 @@ app.configure(function(){
 	//express.bodyParser() es utilizado para el parseo de los post (sean json o no) y nos devuelve el resultado del parsea accesible vía la variable req.body
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+	//para el uso de sesiones
+	app.use(express.cookieParser());
+	app.use(express.session({secret: 'sesion'}));
 	//uso de app.router que contiene todas las rutas definidas, y realiza consulta de rutas basándose en la URL de la solicitud actual y el método HTTP
     app.use(app.router);
 	//Declaramos el directorio desde donde proveemos nuestro contenido estático, esto nos permite acceder a nustros recursos (dentro del directorio public) directamente referenciandolo como <link href="/css/style.css" rel="stylesheet" type="text/css"></link>
@@ -55,6 +58,12 @@ app.get('/pagPrincipal',function(req,res){
 
 app.get('/indexNotificaciones',function(req,res){
 	res.render("indexNotificaciones",{});
+});
+
+app.post('/inicSesion',function(req,res){
+	req.session.ses=req.body;
+	req.session.save(function(err){});
+	res.send('ok');
 });
 
 app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
@@ -115,23 +124,19 @@ app.get('/login/:usu/:pas',function(req,res){
 			var estado=null;
 			if(value!==null){
 				for(var r in value.rows){
-					if(value.rows[r].key==req.params.usu && value.rows[r].value==req.params.pas){
+					if(value.rows[r].key.nombreUsuario==req.params.usu && value.rows[r].key.password==req.params.pas){
 						estado='ok';
 						res.contentType('application/json');
-						res.send({'state':'true'});
-						console.log({'state':'true'});
+						res.send(value.rows[r].key);
 						break;
 					}
 				}
 				if(estado!=='ok'){
-					res.contentType('application/json');
-					res.send({'state':'false'});
-					console.log({'state':'false'});
+					res.send(null);
 				}
 			}else{
 				res.contentType('application/json');
-				res.send({'state':'false'});
-				console.log({'state':'false'});	
+				res.send(null);	
 			}
 		});
 });
