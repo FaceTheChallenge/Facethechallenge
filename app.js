@@ -4,7 +4,7 @@ que nos retorna un objeto con el servidor web que utilizaremos para
 escuchar las peticiones y responderlas
 */
 var express = require('express');
-var app = module.exports = express.createServer();
+var app = express();
 
 //Configuración:
 /*
@@ -111,7 +111,7 @@ app.get('/ranking/:usuarios/:dia',function(req,res){
 
 app.get('/login/:usu/:pas',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
-		db.view('usuarios','listar', function(key, value,rereduce) {
+		db.view('usuarios','listar', function(key, value) {
 			var estado=null;
 			if(value!==null){
 				for(var r in value.rows){

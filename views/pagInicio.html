@@ -7,6 +7,7 @@ function login() {
 		var pas=$('#password').val();
 	    var request = new XMLHttpRequest();
   		var peticion_str = 'http://localhost:3000/login/'+us+'/'+pas;
+		console.log(peticion_str);
   		request.open('GET', peticion_str , true);
   		request.onreadystatechange= function(){
 			if ( request.readyState == 4 ) {
@@ -27,8 +28,8 @@ function login() {
 
 <!-- Cargamos hojas de estilo y ficheros JavaScript -->
 
-<link href="../public/css/estilosFormulario.css" rel="stylesheet" type="text/css">
-<link href="../public/css/estilosLogin.css" rel="stylesheet" type="text/css">
+<link href="css/estilosFormulario.css" rel="stylesheet" type="text/css">
+<link href="css/estilosLogin.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -51,7 +52,7 @@ function login() {
       <input type="password" id="password" name="password" required="">
       <br>
       <br>
-      <input class="buttom" name="submit" id="submit" value="¡Soy un valiente!" type="buttom" onClick="login()">
+      <input class="buttom" name="submit" id="submit" value="¡Soy un valiente!" type="button" onClick="login()">
       </a>
     </form>
   </div>
