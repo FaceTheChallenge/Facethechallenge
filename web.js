@@ -23,7 +23,7 @@ app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 	//para el uso de sesiones
-	app.use(express.cookieParser());
+	app.use(express.cookieParser("thissecretrocks"));
 	app.use(express.session({secret: 'sesion'}));
 	//uso de app.router que contiene todas las rutas definidas, y realiza consulta de rutas basándose en la URL de la solicitud actual y el método HTTP
     app.use(app.router);
