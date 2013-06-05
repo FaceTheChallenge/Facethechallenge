@@ -2,96 +2,144 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type='application/javascript' src='/js/funcionesReto.js' ></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <title>Nuevo Reto</title>
+
 <link href="../public/css/estilosReto.css" rel="stylesheet" type="text/css">
 </head>
+
 <header>
-  <h1>Nuevo Reto</h1>
+    <h1> Nuevo Reto </h1>
 </header>
 
 <body>
 <div class="formulario">
-  <form id="formu">
-    <fieldset>
-      <legend>Datos del reto</legend>
-      <p class="datos">
-        <label for="idR">Id del reto</label>
-        <input id="idR" name="idR" type="text">
-      </p>
-      <p class="datos">
+
+<form id="formu">
+
+<fieldset> 
+<legend>Datos del reto</legend>
+
+<p class="datos">
+    <label>Dificultad del reto</label>
+	<label class="datos">
+          <select class="select-style" name="dificultad" id="dificultad" onChange="retar()">
+          <option value="">-Elija dificultad-</option>
+          <option value="Baja">Baja</option>
+          <option value="Media">Media</option>
+          <option value="Alta">Alta</option>
+          <option value="Humillante">Humillante</option>
+          </select>
+    </label>
+</p>
+
+<p class="datos">
         <label>Categoría del reto</label>
         <label class="datos">
-          <select class="select-style" name="categoria">
-            <option value="">-Elija categoría-</option>
-            <option value="du">Duelo</option>
-            <option value="de">Desafío</option>
+          <select class="select-style" name="categoria" id="categoria">
+          <option value="">-Elija categoría-</option>
+          <option value="du">Duelo</option>
+          <option value="de">Desafío</option>
           </select>
         </label>
-      </p>
-      <p class="datos">
-        <label>Dificultad del reto</label>
-        <label class="datos">
-          <select class="select-style" name="dificultad">
-            <option value="">-Elija dificultad-</option>
-            <option value="01">Baja</option>
-            <option value="02">Media</option>
-            <option value="03">Alta</option>
-            <option value="04">Vergonzoso/Humillante</option>
-          </select>
-        </label>
-      </p>
-      <p class="datos">
-        <label for="fechaInicio">Fecha de inicio del reto</label>
-        <input id="fechaInicio" name="fechaInicio" type="date">
-      </p>
-      <p class="datos">
-        <label for="puntuacion">Puntuación de este reto</label>
-        <input id="puntuacion" name="puntuacion" type="text">
-      </p>
-      <p class="datos">
-        <label for="infoReto">Información del reto</label>
-        <input id="infoReto" name="infoReto" type="text">
-      </p>
-    </fieldset>
+</p>
+
+<p class="datos">
+	<label for="idR">Id del reto</label>
+	<input id="idR" name="idR" type="text">
+</p>
+
+
+
+<p class="datos">
+	<label for="fechaInicio">Fecha de inicio del reto</label>
+    <input id="fechaInicio" name="fechaInicio" type="date">
+</p>
     
-    <!--/ -------------------------------------------------- -->
-    <fieldset>
-      <legend>Datos del grupo retante</legend>
-      <p class="datos">
-        <label for="idGrupo1">Id del grupo</label>
-        <input id="idGrupo1" name="idGrupo1" type="text">
-      </p>
-      <p class="datos">
-        <label for="numeroComp1">Número de integrantes</label>
-        <input id="numeroComp1" name="numeroComp1" type="number" min="1" max="10" value="1">
-      </p>
-      <p class="datos">
-        <label for="nombresComp1">Nombres de los componentes</label>
-        <input id="nombresComp1" name="nombresComp1" type="text" placehotder="Nombres">
-      </p>
-    </fieldset>
+<p class="datos">
+	<label for="puntuacion">Puntuación de este reto</label>
+    <input id="puntuacion" name="puntuacion" type="text">
+</p>    
     
-    <!--/ -------------------------------------------------- -->
-    
-    <fieldset>
-      <legend>Datos del grupo a retar</legend>
-      <p class="datos">
-        <label for="idGrupo2">Id del grupo</label>
-        <input id="idGrupo2" name="idGrupo2" type="text">
-      </p>
-      <p class="datos">
-        <label for="numeroComp2">Número de integrantes</label>
-        <input id="numeroComp2" name="numeroComp2" type="number" min="1" max="10" value="1">
-      </p>
-      <p class="datos">
-        <label for="nombresComp2">Nombres de los componentes</label>
-        <input id="nombresComp2" name="nombresComp2" type="text" placehotder="Nombres">
-      </p>
-    </fieldset>
-    <!-- / --------------------------------------------------- -->
-    
-    <input class="buttom" name="boton" id="boton" value="Crear reto" type="submit">
-  </form>
+<p class="datos">
+	<label for="infoReto">Información del reto</label>
+    <input id="infoReto" name="infoReto" type="text">
+</p>   
+
+</fieldset>
+
+<!--/ -------------------------------------------------- -->
+<fieldset>
+<legend>Datos del grupo retante</legend>
+
+<p class="datos">
+	<label for="idGrupo1">Id del grupo</label>
+	<input id="idGrupo1" name="idGrupo1" type="text">
+</p>
+
+<p class="datos">
+	<label for="numeroComp1">Número de integrantes</label>
+	<input id="numeroComp1" name="numeroComp1" type="number" min="1" max="10" value="1">
+</p>
+
+<p class="datos">
+	<label for="nombresComp1">Nombres de los componentes</label>
+	<input id="nombresComp1" name="nombresComp1" type="text" placehotder="Nombres">
+</p>
+
+</fieldset>
+
+<!--/ -------------------------------------------------- -->
+
+<fieldset>
+<legend>Datos del grupo a retar</legend>
+
+<p class="datos">
+	<label for="idGrupo2">Id del grupo</label>
+	<input id="idGrupo2" name="idGrupo2" type="text">
+</p>
+
+<p class="datos">
+	<label for="numeroComp2">Número de integrantes</label>
+	<input id="numeroComp2" name="numeroComp2" type="number" min="1" max="10" value="1">
+</p>
+
+
+<p class="datos">
+	<label for="nombresComp2">Nombres de los componentes</label>
+	<input id="nombresComp2" name="nombresComp2" type="text" placehotder="Nombres">
+</p>
+
+</fieldset>
+<!-- / --------------------------------------------------- -->
+
+<input class="buttom" name="boton" id="boton" value="Crear reto" type="submit">
+
+</form>
 </div>
 </body>
+
+<script>
+
+function retar() {
+		var valor=document.getElementById('dificultad').value;
+	    var request = new XMLHttpRequest();
+  		var peticion_str = 'http://localhost:3000/retar/dificultad/'+valor+'/';
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 ) {
+				console.log(request);
+				var json;
+				eval ( 'json = '+ request.responseText );
+				console.log(json);
+  			}	
+		};
+  		request.send(null);
+		
+	}
+	
+</script>
+
+
 </html>
