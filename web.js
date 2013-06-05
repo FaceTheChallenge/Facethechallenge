@@ -175,6 +175,29 @@ app.get('/login/:usu/:pas',function(req,res){
 		});
 });
 
+
++app.get('/retar/dificultad/:valor/',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
+		db.view('retar','dificultad', {key: req.params.valor}, function(key, value,rereduce) {
+			var keys=new Array;
+			var values=new Array;
+			for(var r in value.rows){
+				keys[r]=value.rows[r].key;
+				values[r]=value.rows[r].value;
+			}
+			var objeto=new Object;
+			var ind=keys.length;
+			for (var i in keys){
+				eval('objeto.reto'+ind+'=values[i]');
+				ind--;
+			}
+			json=JSON.stringify(objeto);
+			console.log(json);
+			res.contentType('application/json');
+			res.send(json);
+		});
+});
+
 // Escuchamos o en el puerto que se nos indique desde el servidor o en el 3000 (para pruebas locales)
 app.listen(process.env.PORT || 3000);
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
