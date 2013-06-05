@@ -4,15 +4,41 @@
 <script src="../public/js/jquery.roundabout.js"></script>
 <script src="../public/js/funciones.js"></script>
 <script>      
+   var sesion=null;
    $(document).ready(function() {
       $('ul').roundabout();
 	  cambio('indexNotificaciones.html','570px');
 	  ranking();
-	  obtenerGravatar();
+	  obtSesion();
    });
    
+   	function obtSesion(){
+		if (window.XMLHttpRequest) 
+		{ 
+   		 	var request = new XMLHttpRequest();     // Firefox, Safari, ...
+		} 
+		else if (window.ActiveXObject)   // Internet Explorer 
+		{
+    		var request = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		var peticion_str = '/sesion';
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 && request.status == 200) {
+				if(request.responseText){
+					sesion=JSON.parse(request.responseText);
+					obtenerGravatar();
+					$('#datos').html('<li>Usuario: '+sesion.nombreUsuario+'</li><li>Grupo: '+sesion.grupo+'</li><li>Puntuacion: '+sesion.puntuacion+'</li>');
+				}else{
+					$(location).attr('href','pagInicio.html'); 
+				}
+			}
+		};
+		request.send(null);
+	};
+	
    	function obtenerGravatar(){
-		$('#imUs').attr('src', 'http://www.gravatar.com/avatar/' + md5('joselillom91@hotmail.com'));
+		$('#imUs').attr('src', 'http://www.gravatar.com/avatar/' + md5(sesion.correo));
 	};
    
 	function cambio(url,s){
@@ -23,14 +49,13 @@
 	}
 	function ranking() {
 	    var request = new XMLHttpRequest();
-  		var peticion_str = 'http://localhost:3000/ranking/usuarios/dia';
+  		var peticion_str = '/ranking/usuarios/dia';
   		request.open('GET', peticion_str , true);
   		request.onreadystatechange= function(){
 			if ( request.readyState == 4 ) {
 				console.log(request);
 				var json;
 				eval ( 'json = '+ request.responseText );
-				console.log(json);
   			}	
 		};
   		request.send(null);

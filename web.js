@@ -100,6 +100,10 @@ app.post('/inicSesion',function(req,res){
 	res.send('ok');
 });
 
+app.get('/sesion',function(req,res){
+	res.send(req.session.ses);
+});
+
 app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		console.log("Vamos a hacer la inserción");
@@ -146,7 +150,6 @@ app.get('/ranking/:usuarios/:dia',function(req,res){
 				ind--;
 			}
 			json=JSON.stringify(objeto);
-			console.log(json);
 			res.contentType('application/json');
 			res.send(json);
 		});
@@ -174,7 +177,6 @@ app.get('/login/:usu/:pas',function(req,res){
 			}
 		});
 });
-
 
 +app.get('/retar/dificultad/:valor/',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
