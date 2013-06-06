@@ -50,7 +50,7 @@
     <input type="password" id="repassword" name="repassword" required="">
     <br>
     <label>Sexo</label>
-    <select class="select-style" name="genero">
+    <select class="select-style" id="gender">
       <option value="m">Masculino</option>
       <option value="f">Femenino</option>
     </select>
@@ -59,7 +59,7 @@
     <fieldset>
       <label>Cumpleaños</label>
       <label class="mes">
-        <select class="select-style" name="cumple">
+        <select class="select-style" id="BirthMonth">
           <option value="">Mes</option>
           <option  value="01">Enero</option>
           <option value="02">Febrero</option>
@@ -76,10 +76,10 @@
         </select>
       </label>
       <label>Día
-        <input class="birthday" maxlength="2" name="BirthDay"  placeholder="Día" required="">
+        <input class="birthday" maxlength="2" id="BirthDay"  placeholder="Día" required="">
       </label>
       <label>Año
-        <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Año" required="">
+        <input class="birthyear" maxlength="4" id="BirthYear" placeholder="Año" required="">
       </label>
     </fieldset>
     <br>
@@ -88,93 +88,9 @@
       <input id="phone" name="phone" placeholder="666666666" required="" type="text">
       <br>
       <br>
-      <input class="buttom" name="submit" id="submit" value="Registrarse" type="submit" >
+      <input class="buttom" name="submit" id="submit" value="Registrarse" onClick="obtenValores()" />
   </form>
 </div>
 </div>
-</body>
-</html>
-
-<script type='text/javascript' >
-
-	function obtenValores(){
-	//Voy a ir recogiendo todos los valores del campo para enviarlos como una cadena JSON
-	alert('Estoy aqui!!');
-		var nombre = document.getElementById('name').value;
-		var email = document.getElementById('email').value;
-		var user = document.getElementById('username').value;
-		var pass = document.getElementById('password').value;
-		var repass = document.getElementById('repassword').value;
-
-		var sex = document.getElementById('gender').value;
-		
-		//Pongo el sexo del usuario como texto
-		if (sex == "m"){sex = "Masculino";}
-		else{sex = "Femenino";}
-
-		var mes = document.getElementById('BirthMonth').value;
-		var dia = document.getElementById('BirthDay').value;
-		var anio = document.getElementById('BirthYear').value;
-		
-		//Pongo el mes con nombre
-		if (mes == "01"){mes = "Enero";}
-		if (mes == "02"){mes = "Febrero";}
-		if (mes == "03"){mes = "Marzo";}
-		if (mes == "04"){mes = "Abril";}
-		if (mes == "05"){mes = "Mayo";}
-		if (mes == "06"){mes = "Junio";}
-		if (mes == "07"){mes = "Julio";}
-		if (mes == "08"){mes = "Agosto";}
-		if (mes == "09"){mes = "Septiembre";}
-		if (mes == "10"){mes = "Octubre";}
-		if (mes == "11"){mes = "Noviembre";}
-		if (mes == "12"){mes = "Diciembre";}
-		
-		//Obtengo la fecha de nacimiento completa
-		var nacimiento = dia + "/" + mes + "/" + anio;
-		
-		var movil = document.getElementById('phone').value;
-		
-		alert('Voy a coger la fecha');
-		fechaRegistro = "";
-		//var fechaRegistro = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-		alert('Fecha cogida')
-		
-		alert('El pass es: '+pass+' y el repass: '+repass);
-		
-		//Ahora, para enviar los datos, compruebo por ejemplo que el password está bien repetido:
-		if (pass==repass){
-		alert('Los passwords coinciden');
-		
-		var respuesta = {"_id":user,"nombre":nombre,"email":email,"pass":pass,"sexo":sex,"fechaNacimiento":nacimiento};
-		alert('va va');
-		alert(respuesta);
-		alert('ahi va ahi va');
-				
-		db.insert(respuesta, function(error,http_body,http_headers){
-		
-		if(error){alert('Por alguna razón, no se puede, error: '+error);}
-		
-		else{
-			console.log(http_body);
-			console.log("Ya está hecha la peticion");
-		}
-		
-		});
-		alert('Voy a hacer la insercion!!!');
-		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
-		var json={"nombre":nombre,"sexo":sex,"fechaNacimiento":nacimiento,"correo":email,"nombreUsuario":user,"contraseña":pass,"retosSuperados":"null","retosFallidos":"null","retosTotales":"null","puntuacion":"null","retosActivos":"null","notificaciones":"1","privacidad":"2","fechaRegistro":fechaRegistro,"grupo":"null"};
-				db.insert( { 'docs' : json},function (error,http_body,http_headers) {
-			     console.log(http_body);
-			 }
-		       );
-		}
-		else{alert('Eh!! La clave no coincide!!');}
-		
-		
-}
-</script>
-
-
 </body>
 </html>

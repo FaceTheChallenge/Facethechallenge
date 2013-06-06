@@ -57,12 +57,14 @@ function comprobar()
 		
 		//Ahora, para enviar los datos, compruebo por ejemplo que el password está bien repetido:
 		if (pass==repass){
-		var peticion = "http://localhost:3000/registrar/"+nombre+"/"+sex+"/"+nacimiento+"/"+email+"/"+user+"/"+pass+"/"+fechaRegistro+"/"+movil;
-
-		request.open('GET',peticion,true);
+		//var peticion = "http://localhost:3000/registrar/"+nombre+"/"+sex+"/"+nacimiento+"/"+email+"/"+user+"/"+pass+"/"+fechaRegistro+"/"+movil;
+		var peticion = "/registrar/"+nombre+"/"+sex+"/"+nacimiento+"/"+email+"/"+user+"/"+pass+"/"+fechaRegistro+"/"+movil;
+		request.open('POST',peticion,true);
 		request.onreadystatechange=alert('¡¡Bienvenido!!  ¡¡Eres un valiente!!\n\n Espera mientras te redireccionamos al inicio...');
 		request.send(null);
-		setTimeout('document.location = "http://localhost:3000/pagInicio"',2000);
+		
+		setTimeout('document.location = "/pagInicio"',2000);
+		
 
 		}
 		else{alert('Eh!! La clave no coincide!!');}

@@ -178,7 +178,7 @@ app.get('/login/:usu/:pas',function(req,res){
 		});
 });
 
-+app.get('/retar/dificultad/:valor/',function(req,res){
+app.get('/retar/dificultad/:valor/',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
 		db.view('retar','dificultad', {key: req.params.valor}, function(key, value,rereduce) {
 			var keys=new Array;
