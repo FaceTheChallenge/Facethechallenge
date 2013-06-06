@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type='application/javascript' src='/js/funcionesReto.js' ></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="../public/js/comprobar.js" language="JavaScript"> </script>
 <title>Nuevo Reto</title>
 
 <link href="../public/css/estilosReto.css" rel="stylesheet" type="text/css">
@@ -24,7 +25,7 @@
 <p class="datos">
     <label>Dificultad del reto</label>
 	<label class="datos">
-          <select class="select-style" name="dificultad" id="dificultad" onChange="retar()">
+          <select class="select-style" name="dificultad" id="dificultad" />
           <option value="">-Elija dificultad-</option>
           <option value="Baja">Baja</option>
           <option value="Media">Media</option>
@@ -53,8 +54,9 @@
 
 
 <p class="datos">
-	<label for="fechaInicio">Fecha de inicio del reto</label>
+	<label for="fechaInicio">Fecha de inicio del reto</label><p></p>
     <input id="fechaInicio" name="fechaInicio" type="date">
+	<label>NOTA: Si no eliges una fecha de inicio, consideramos que vas a crear un nuevo reto.<p></p></label>
 </p>
     
 <p class="datos">
@@ -114,32 +116,10 @@
 </fieldset>
 <!-- / --------------------------------------------------- -->
 
-<input class="buttom" name="boton" id="boton" value="Crear reto" type="submit">
+<input class="buttom" name="boton" id="boton" value="Crear reto" onClick="retar()" />
 
 </form>
 </div>
 </body>
-
-<script>
-
-function retar() {
-		var valor=document.getElementById('dificultad').value;
-	    var request = new XMLHttpRequest();
-  		var peticion_str = 'http://localhost:3000/retar/dificultad/'+valor+'/';
-  		request.open('GET', peticion_str , true);
-  		request.onreadystatechange= function(){
-			if ( request.readyState == 4 ) {
-				console.log(request);
-				var json;
-				eval ( 'json = '+ request.responseText );
-				console.log(json);
-  			}	
-		};
-  		request.send(null);
-		
-	}
-	
-</script>
-
 
 </html>

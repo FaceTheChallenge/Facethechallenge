@@ -200,6 +200,26 @@ app.get('/retar/dificultad/:valor/',function(req,res){
 		});
 });
 
+app.post('/crearReto/:dificultad/:categoria/:idReto/:puntos/:info',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
+		console.log("Vamos a hacer la inserción");
+		
+		var datos = {'dificultad':req.params.dificultad,
+		'categoria':req.params.categoria,
+		'idReto':req.params.idReto,
+		'puntuacion':req.params.puntos,
+		'informacion':req.params.info,
+		'password':req.params.password};
+		
+		console.log(datos);
+		
+				db.insert({'docs':datos},function (error,http_body,http_headers) {
+			     console.log(http_body);
+			 }
+		       );
+});
+
+
 // Escuchamos o en el puerto que se nos indique desde el servidor o en el 3000 (para pruebas locales)
 app.listen(process.env.PORT || 3000);
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

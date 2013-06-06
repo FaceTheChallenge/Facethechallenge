@@ -72,4 +72,38 @@ function comprobar()
 		
 }
 
+function retar() {		
+		
+		if (document.getElementById("fechaInicio").value = " " || document.getElementById("fechaInicio").length<10){ //Está vacio, vamos a CREAR un reto nuevo.
+			var dificultad = document.getElementById('dificultad').value;
+			var categoria = document.getElementById('categoria').value;
+			var idReto = document.getElementById("idR").value;
+			var puntos = document.getElementById("puntuacion").value;
+			var info = document.getElementById("infoReto").value;
+			
+			var peticion = "/crearReto/"+dificultad+"/"+categoria+"/"+idReto+"/"+puntos+"/"+info;
+		request.open('POST',peticion,true);
+		request.onreadystatechange=alert('Reto creado.\n\n Espera mientras te redirigimos...');
+		request.send(null);
+		
+		setTimeout('document.location = "/pagPrincipal"',10000);
+		}
+		
+		
+		
+	    /*var request = new XMLHttpRequest();
+  		var peticion_str = 'http://localhost:3000/retar/dificultad/'+valor+'/';
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 ) {
+				console.log(request);
+				var json;
+				eval ( 'json = '+ request.responseText );
+				console.log(json);
+  			}	
+		};
+  		request.send(null);*/
+		
+}
+
 // JavaScript Document
