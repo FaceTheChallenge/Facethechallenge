@@ -1,10 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../public/js/funcionesExternas.js" language="JavaScript"> </script>
 <script>
 function login() {
 		var us=$('#username').val();
-		var pas=$('#password').val();
+		var pas=md5($('#password').val()); //Clave codificada en MD5
+	
 		if (window.XMLHttpRequest) 
 		{ 
    		 	var request = new XMLHttpRequest();     // Firefox, Safari, ...

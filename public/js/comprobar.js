@@ -1,21 +1,5 @@
 var request = new XMLHttpRequest();
 
-function comprobar()
-{
-   var nombre = document.registroform.name.value;
-   var email = document.registroform.email.value;
-   alert("Te has registrado con el nombre:  " + nombre + "\n\n Email de registro:  " + email);
-   
-   var intento = $(':text');
-   var cadena = 'Datos ingresados:\n ';
-   for (var i=0 ; i<intento.length ; i++){
-	   cadena = cadena + '\n' + $(intento[i]).val()
-   }
-
-   alert(cadena);
-   return true;
-}
-
 function obtenValores(){
 	//Voy a ir recogiendo todos los valores del campo para enviarlos como una cadena JSON, comprobando que todos los campos están rellenos:
 	var envia = 0;
@@ -106,8 +90,8 @@ function obtenValores(){
 		var nacimiento = dia + "-" + mes + "-" + anio;
 	
 	//Compruebo el telefono movil
-	if (document.getElementById('phone').value == ""){
-		alert('Necesitamos saber tu móvil');
+	if (document.getElementById('phone').value.length < 9 || isNaN(document.getElementById('phone').value)){
+		alert('Tu móvil debe contener 9 números');
 		document.getElementById('phone').focus();
 		envia = 0;
 		return false;
@@ -123,6 +107,8 @@ function obtenValores(){
 		//Ahora, para enviar los datos, compruebo por ejemplo que el password está bien repetido:
 		if (pass==repass){
 			if (envia == 1){
+				pass = md5(pass);
+				alert(pass);
 				var peticion = "/registrar/"+nombre+"/"+sex+"/"+nacimiento+"/"+email+"/"+user+"/"+pass+"/"+fechaRegistro+"/"+movil;
 				request.open('POST',peticion,true);
 				request.onreadystatechange=alert('¡¡Bienvenido!!  ¡¡Eres un valiente!!\n\n Espera mientras te redireccionamos al inicio...');
