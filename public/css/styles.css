@@ -221,6 +221,15 @@ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e698c', endC
 	box-shadow: 0 1px 3px #999;
 	text-shadow: 0 -1px 1px #222;
 }
+
+.name{
+	float:left;
+}
+.points{
+	float:right;
+	width:4px;
+}
+
 /* Visión de los enlaces */
 .clsTitulo a, .clsTitulo a:visited {
 	text-decoration:none;

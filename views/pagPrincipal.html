@@ -56,8 +56,12 @@
 				eval ( 'json = '+ request.responseText );
 				var html="";
 				n=json.Nres;
-				for (var i=0;i<n;i++){
-					html+='<li>'+'Hola'+'</li>';
+				var nomb="";
+				var punt="";
+				for (var i=1;i<=n;i++){
+					nomb='nombre'+i;
+					punt='punt'+i;
+					html+='<li><div class="name">'+eval('json.'+nomb)+'</div><div class="points">'+eval('json.'+punt)+'</div></li>';
 				}
 				$('#lista ul').html(html);
   			}	

@@ -57,10 +57,11 @@
 				var html="";
 				n=json.Nres;
 				var nomb="";
-				for (var i=0;i<n;i++){
-					nomb='nombre'+n;
-					html+='<li>'+eval('json.'+nomb)+'</li>';
-					n--;
+				var punt="";
+				for (var i=1;i<=n;i++){
+					nomb='nombre'+i;
+					punt='punt'+i;
+					html+='<li><div class="name">'+eval('json.'+nomb)+'</div><div class="points">'+eval('json.'+punt)+'</div></li>';
 				}
 				$('#lista ul').html(html);
   			}	
