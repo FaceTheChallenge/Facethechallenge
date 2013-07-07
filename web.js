@@ -143,6 +143,7 @@ app.get('/ranking/:usuarios/:dia',function(req,res){
 			var objeto=new Object;
 			objeto.id="busquedaA";
 			objeto.type="RankGrup";
+			objeto.Nres=keys.length;
 			var ind=keys.length;
 			for (var i in keys){
 				eval('objeto.nombre'+ind+'=values[i]');
