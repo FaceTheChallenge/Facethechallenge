@@ -108,6 +108,7 @@
 	cursor: pointer;
 	font-size: 14px;
 	font-family:Verdana, Geneva, sans-serif;
+	text-align:center;
 }
 .form input.buttom:hover {
 	background-color: #2a78f6;

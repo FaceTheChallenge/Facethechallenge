@@ -35,7 +35,9 @@ app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-// Rutas
+/*--------------------------------------------------------------*/
+/*						RUTAS									*/
+/*--------------------------------------------------------------*/
 
 app.get('/',function(req,res){
     res.render("pagInicio",{});
@@ -62,6 +64,10 @@ app.get('/indexNotificaciones',function(req,res){
 
 app.get('/albumInfo',function(req,res){
 	res.render("albumInfo",{});
+});
+
+app.get('/gruposNew',function(req,res){
+	res.render("gruposNew",{});
 });
 
 app.get('/gruposAdComp',function(req,res){
@@ -92,8 +98,9 @@ app.get('/indexGrupos',function(req,res){
 	res.render("indexGrupos",{});
 });
 
-
-
+/*--------------------------------------------------------------*/
+/*						SESIONES								*/
+/*--------------------------------------------------------------*/
 app.post('/inicSesion',function(req,res){
 	req.session.ses=req.body;
 	req.session.save(function(err){});
@@ -104,6 +111,9 @@ app.get('/sesion',function(req,res){
 	res.send(req.session.ses);
 });
 
+/*--------------------------------------------------------------*/
+/*					REGISTRO DE USUARIOS						*/
+/*--------------------------------------------------------------*/
 app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:password/:fechaRegistro/:movil',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		console.log("Vamos a hacer la inserción");
@@ -130,7 +140,33 @@ app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:pass
 			 }
 		       );
 });
-
+/*--------------------------------------------------------------*/
+/*					CREACIÓN DE GRUPOS							*/
+/*--------------------------------------------------------------*/
+app.post('/crear/:nombre/:admin/:int1/:privacidad/:fechaCreacion',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('grupos');
+		console.log("Vamos a hacer la inserción");
+		
+		var datos = {'nombre':req.params.nombre,
+		'admin':req.params.admin,
+		'int1':req.params.int1,
+		'privacidad':req.params.privacidad,
+		'retosSuperados':0,
+		'retosFallidos':0,
+		'retosTotales':0,
+		'puntuacion':0,
+		'retosActivos':0,
+		'notificaciones':1,
+		'fechaCreacion':req.params.fechaCreacion};
+		
+				db.insert({'docs':datos},function (error,http_body,http_headers) {
+			     console.log(http_body);
+			 }
+		       );
+});
+/*--------------------------------------------------------------*/
+/*							RANKING								*/
+/*--------------------------------------------------------------*/
 app.get('/ranking/:usuarios/:dia',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		db.view('ranking','usuariosDia', function(key, value,rereduce) {
@@ -155,7 +191,9 @@ app.get('/ranking/:usuarios/:dia',function(req,res){
 			res.send(json);
 		});
 });
-
+/*--------------------------------------------------------------*/
+/*							LOGIN								*/
+/*--------------------------------------------------------------*/
 app.get('/login/:usu/:pas',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
 		db.view('usuarios','listar', function(key, value) {
@@ -178,7 +216,9 @@ app.get('/login/:usu/:pas',function(req,res){
 			}
 		});
 });
-
+/*--------------------------------------------------------------*/
+/*							RETOS								*/
+/*--------------------------------------------------------------*/
 app.get('/retar/dificultad/:valor/',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
 		db.view('retar','dificultad', {key: req.params.valor}, function(key, value,rereduce) {

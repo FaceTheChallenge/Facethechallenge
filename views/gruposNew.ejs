@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Cargamos hojas de estilo y ficheros JavaScript -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/comprobar.js" language="JavaScript"> </script>
+<link href="css/estilosFormulario.css" rel="stylesheet" type="text/css" />
+<link href="css/stylesNotif.css" rel="stylesheet" type="text/css" />
+<link href="css/estilosGrupos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div  class="form">
+  <fieldset class="grupo" id="opcionesGrupos" name="opcionesGrupos">
+    <legend> Creación de grupo</legend>
+    <div id="formularioCrear">
+      <p>
+        <label for="name">Nombre del grupo:</label>
+      </p>
+      <input name="nameGrupo" class="crearGrupo" placeholder="Nombre" required="" type="text">
+      <p>
+        <label for="name">Administrador:</label>
+      </p>
+      <input name="nameAd" class="crearGrupo" placeholder="Nombre" required="" type="text">
+      <p>
+        <label for="name">Integrante:</label>
+      </p>
+      <input name="nameIn1" class="crearGrupo" placeholder="Nombre" required="" type="text">
+      <p>
+        <label for="privacidad"> Privacidad:
+          <select class="select-style" id="privacidad">
+            <option value="0">público</option>
+            <option value="1">usuarios registrados</option>
+            <option value="2">privado</option>
+          </select>
+        </label>
+      </p>
+      
+    </div>
+    <br>
+    <br>
+    <br>
+    <input class="buttom" name="submit" id="submit" value="Crear Grupo" type="submit" onClick="obtenValoresGrupo()">
+  </fieldset>
+</div>
+</body>
+</html>

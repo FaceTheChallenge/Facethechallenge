@@ -4,7 +4,7 @@ $(document).ready(function(){
 		//Ventana de confirmación:
 		$.confirm({
 			'title'		: 'Confirmación requerida',
-			'message'	: '¿Estás seguro de lo que vas a hacer?',
+			'message'	: '¿Estás seguro de eliminar el grupo?',
 			'buttons'	: {
 				'Si'	: {
 					'class'	: 'blue',

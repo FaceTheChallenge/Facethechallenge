@@ -1,5 +1,6 @@
 var request = new XMLHttpRequest();
 
+//Función para obtener los datos del usuario en el registro del mismo:
 function obtenValores(){
 	//Voy a ir recogiendo todos los valores del campo para enviarlos como una cadena JSON, comprobando que todos los campos están rellenos:
 	var envia = 0;
@@ -138,4 +139,41 @@ function retar() {
 		setTimeout('document.location = "/pagPrincipal"',2000);
 		}
 		
+}
+
+//Función para obtener los valores al crear un grupo:
+function obtenValoresGrupo(){
+	var valido = true;
+ 	var campos = $(':text');
+ 	var peticion = "/crear";
+ 	for (var i=0 ; i<campos.length ; i++){
+	   peticion = peticion + "/" + $(campos[i]).val();
+	  
+	   //Si un campo está vacío
+	   if( $(campos[i]).val().length == '0'){
+		   valido = false;
+		   
+		}
+	      }
+	//Si todos los campos están rellenos:
+	if(valido == true){
+		//Tomamos la opción de privacidad escogida:
+		var privacidad = $('select#privacidad').val();
+		//Tomamos la fecha actual:
+		var f = new Date();
+		var fechaCreacion = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
+		peticion = peticion + "/" + privacidad + "/" + fechaCreacion;
+		
+				request.open('POST',peticion,true);
+				request.onreadystatechange=alert('Grupo creado correctamente');
+				request.send(null);
+				//Borramos el formulario:
+				for (var i=0 ; i<campos.length ; i++){
+					 $(campos[i]).val("");
+				}
+				//Volvemos a la página principal de grupos
+				setTimeout('document.location = "/gruposInfo"',1000);
+		}else{
+			alert('Todos los campos deben estar'+'\n'+'rellenos para la creación del grupo');
+		}
 }
