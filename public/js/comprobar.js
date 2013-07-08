@@ -108,7 +108,6 @@ function obtenValores(){
 		if (pass==repass){
 			if (envia == 1){
 				pass = md5(pass);
-				alert(pass);
 				var peticion = "/registrar/"+nombre+"/"+sex+"/"+nacimiento+"/"+email+"/"+user+"/"+pass+"/"+fechaRegistro+"/"+movil;
 				request.open('POST',peticion,true);
 				request.onreadystatechange=alert('¡¡Bienvenido!!  ¡¡Eres un valiente!!\n\n Espera mientras te redireccionamos al inicio...');
