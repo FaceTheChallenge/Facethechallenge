@@ -143,7 +143,7 @@ app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:pass
 /*--------------------------------------------------------------*/
 /*					CREACIÓN DE GRUPOS							*/
 /*--------------------------------------------------------------*/
-app.post('/crear/:nombre/:admin/:int1/:privacidad/:fechaCreacion',function(req,res){
+app.post('/crear/:nombre/:admin/:int1/:privacidad/:periodo/:privacidadReto/:fechaCreacion',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('grupos');
 		console.log("Vamos a hacer la inserción");
 		
@@ -151,6 +151,8 @@ app.post('/crear/:nombre/:admin/:int1/:privacidad/:fechaCreacion',function(req,r
 		'admin':req.params.admin,
 		'int1':req.params.int1,
 		'privacidad':req.params.privacidad,
+		'periodo':req.params.periodo,
+		'privacidadReto':req.params.privacidadReto,
 		'retosSuperados':0,
 		'retosFallidos':0,
 		'retosTotales':0,

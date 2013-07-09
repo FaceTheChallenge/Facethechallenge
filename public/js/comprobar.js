@@ -157,12 +157,14 @@ function obtenValoresGrupo(){
 	      }
 	//Si todos los campos están rellenos:
 	if(valido == true){
-		//Tomamos la opción de privacidad escogida:
+		//Tomamos las opciones de los selectores:
 		var privacidad = $('select#privacidad').val();
+		var periodo = $('select#periodo').val();
+		var privacidadReto = $('select#privacidadReto').val();
 		//Tomamos la fecha actual:
 		var f = new Date();
 		var fechaCreacion = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
-		peticion = peticion + "/" + privacidad + "/" + fechaCreacion;
+		peticion = peticion + "/" + privacidad + "/" + periodo + "/" + privacidadReto + "/" + fechaCreacion;
 		
 				request.open('POST',peticion,true);
 				request.onreadystatechange=alert('Grupo creado correctamente');
