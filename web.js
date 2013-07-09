@@ -221,7 +221,7 @@ app.get('/login/:usu/:pas',function(req,res){
 /*--------------------------------------------------------------*/
 /*							RETOS								*/
 /*--------------------------------------------------------------*/
-app.get('/retar/dificultad/:valor/',function(req,res){
+app.get('/retar/:dificultad/:valor',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
 		db.view('retar','dificultad', {key: req.params.valor}, function(key, value,rereduce) {
 			var keys=new Array;
@@ -260,6 +260,28 @@ app.post('/crearReto/:dificultad/:categoria/:idReto/:puntos/:info',function(req,
 			     console.log(http_body);
 			 }
 		       );
+});
+
+app.get('/retar/:puntuacion/:idReto',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('retos');
+		db.view('retar','info', {key: req.params.idReto}, function(key, value,rereduce) {
+			var keys=new Array;
+			var values=new Array;
+			for(var r in value.rows){
+				keys[r]=value.rows[r].key;
+				values[r]=value.rows[r].value;
+			}
+			var objeto=new Object;
+			var ind=keys.length;
+			for (var i in keys){
+				eval('objeto.reto'+ind+'=values[i]');
+				ind--;
+			}
+			json=JSON.stringify(objeto);
+			console.log(json);
+			res.contentType('application/json');
+			res.send(json);
+		});
 });
 
 
