@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type='application/javascript' src='/js/funcionesReto.js' ></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="js/comprobar.js" language="JavaScript"> </script>
 <title>Nuevo Reto</title>
@@ -28,7 +27,7 @@
 <p class="datos">
     <label>Dificultad del reto</label>
 	<label class="datos">
-          <select class="select-style" name="dificultad" id="dificultad" onChange="retar()"/>
+          <select class="select-style" id="dificultad">
           <option value="">-Elija dificultad-</option>
           <option value="Baja">Baja</option>
           <option value="Media">Media</option>
@@ -41,7 +40,7 @@
 <p class="datos">
         <label>Categoría del reto</label>
         <label class="datos">
-          <select class="select-style" name="categoria" id="categoria">
+          <select class="select-style" id="categoria">
           <option value="">-Elija categoría-</option>
           <option value="du">Duelo</option>
           <option value="de">Desafío</option>
@@ -50,144 +49,39 @@
 </p>
 
 <p class="datos">
-        <label>Id del Reto</label>
-        <label class="datos">
-          <select class="select-style" name="idR" id="idR" onChange="mostrarInfo()">
-          <option value="">-Elija reto-</option>
-          <option value="1"></option>
-          <option value="2"></option>
-          </select>
-        </label>
-</p>
-
-
-
-<p class="datos">
-	<label for="fechaInicio">Fecha de inicio del reto</label><p></p>
-    <input id="fechaInicio" name="fechaInicio" type="date">
-	<label>NOTA: Si no eliges una fecha de inicio, consideramos que vas a crear un nuevo reto.<p></p></label>
+	<label for="idReto">Nombre del reto</label>
+	<input id="idReto" name="idReto" type="text">
 </p>
     
 <p class="datos">
         <label>Puntuación</label>
         <label class="datos">
-          <select class="select-style" name="puntuacion" id="puntuacion">
-          <option value=""></option>
+          <select class="select-style" id="puntuacion">
+          <option value="">-Elija puntuación-</option>
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
           </select>
         </label>
 </p>    
-    
-<p class="datos">
-        <label>Información del reto</label>
-        <label class="datos">
-          <select class="select-style" name="info" id="info">
-          <option value=""></option>
-          </select>
-        </label>
-</p>  
-
-</fieldset>
-
-<!--/ -------------------------------------------------- -->
-<fieldset>
-<legend>Datos del grupo retante</legend>
 
 <p class="datos">
-	<label for="idGrupo1">Id del grupo</label>
+	<label for="idGrupo1">Id del grupo retante</label>
 	<input id="idGrupo1" name="idGrupo1" type="text">
 </p>
 
 <p class="datos">
-	<label for="numeroComp1">Número de integrantes</label>
-	<input id="numeroComp1" name="numeroComp1" type="number" min="1" max="10" value="1">
-</p>
-
-<p class="datos">
-	<label for="nombresComp1">Nombres de los componentes</label>
-	<input id="nombresComp1" name="nombresComp1" type="text" placehotder="Nombres">
-</p>
-
-</fieldset>
-
-<!--/ -------------------------------------------------- -->
-
-<fieldset>
-<legend>Datos del grupo a retar</legend>
-
-<p class="datos">
-	<label for="idGrupo2">Id del grupo</label>
+	<label for="idGrupo2">Id del grupo a retar</label>
 	<input id="idGrupo2" name="idGrupo2" type="text">
-</p>
-
-<p class="datos">
-	<label for="numeroComp2">Número de integrantes</label>
-	<input id="numeroComp2" name="numeroComp2" type="number" min="1" max="10" value="1">
-</p>
-
-
-<p class="datos">
-	<label for="nombresComp2">Nombres de los componentes</label>
-	<input id="nombresComp2" name="nombresComp2" type="text" placehotder="Nombres">
 </p>
 
 </fieldset>
 <!-- / --------------------------------------------------- -->
 
-<input class="buttom" name="boton" id="boton" value="Crear reto">
-
+<input class="buttom" name="submit" id="submit" value="Crear Reto" type="submit" onClick="obtenValoresReto()">
 </form>
 </div>
 </body>
-
-<script>
-	
-	function retar() {
-		var valor=document.getElementById('dificultad').value;
-	    var request = new XMLHttpRequest();
-		var peticion_str = 'http://localhost:3000/retar/dificultad/'+valor;
-  		request.open('GET', peticion_str , true);
-  		request.onreadystatechange= function(){
-			if ( request.readyState == 4 ) {
-				if (request.status == 200){
-					console.log(request);
-					var json;
-					datos = eval ( 'json = '+ request.responseText );
-					console.log(json);
-				};
-  			};	
-		 		var i=1;
-				document.formu.idR.options[1]= new Option(datos.reto1.idReto);
-			
-		};
-  		request.send(null);
-		
-		
-	};
-
-	
-	function mostrarInfo() {
-		var valor=document.getElementById('idR').value;
-	    var request = new XMLHttpRequest();
-		var peticion_str = 'http://localhost:3000/retar/puntuacion/info';
-  		request.open('GET', peticion_str , true);
-  		request.onreadystatechange= function(){
-			if ( request.readyState == 4 ) {
-				if (request.status == 200){
-					console.log(request);
-					var json;
-					datos = eval ( 'json = '+ request.responseText );
-					console.log(json);
-				};
-  			};	
-			document.formu.puntuacion.options[0]= new Option(datos.reto1.puntuacion);
-			document.formu.info.options[0]= new Option(datos.reto1.informacion);
-		};
-  		request.send(null);
-		
-		
-	};
-	
-</script>
 
 </html>
 

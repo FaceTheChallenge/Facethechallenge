@@ -122,25 +122,6 @@ function obtenValores(){
 		
 }
 
-function retar() {		
-		
-		if (document.getElementById("fechaInicio").value = " " || document.getElementById("fechaInicio").length<10){ //Está vacio, vamos a CREAR un reto nuevo.
-			var dificultad = document.getElementById('dificultad').value;
-			var categoria = document.getElementById('categoria').value;
-			var idReto = document.getElementById("idR").value;
-			var puntos = document.getElementById("puntuacion").value;
-			var info = document.getElementById("infoReto").value;
-			
-			var peticion = "/crearReto/"+dificultad+"/"+categoria+"/"+idReto+"/"+puntos+"/"+info;
-		request.open('POST',peticion,true);
-		request.onreadystatechange=alert('Reto creado.\n\n Espera mientras te redirigimos...');
-		request.send(null);
-		
-		setTimeout('document.location = "/pagPrincipal"',2000);
-		}
-		
-}
-
 //Función para obtener los valores al crear un grupo:
 function obtenValoresGrupo(){
 	var valido = true;
@@ -177,6 +158,43 @@ function obtenValoresGrupo(){
 				setTimeout('document.location = "/gruposInfo"',1000);
 		}else{
 			alert('Todos los campos deben estar'+'\n'+'rellenos para la creación del grupo');
+		}
+}
+
+//Función para obtener los valores al crear un reto:
+function obtenValoresReto(){
+	var valido = true;
+ 	var campos = $(':text');
+ 	var peticion = "/nuevoreto";
+ 	for (var i=0 ; i<campos.length ; i++){
+	   peticion = peticion + "/" + $(campos[i]).val();
+	  
+	   //Si un campo está vacío
+	   if( $(campos[i]).val().length == '0'){
+		   valido = false;
+		   
+		}
+	      }
+	//Si todos los campos están rellenos:
+	if(valido == true){
+		//Tomamos las opciones de los selectores:
+		var dificultad = $('select#dificultad').val();
+		var categoria = $('select#categoria').val();
+		var puntuacion = $('select#puntuacion').val();
+		//Tomamos la fecha actual:
+		var f = new Date();
+		var fechaCreacion = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
+		peticion = peticion + "/" + dificultad + "/" + categoria + "/" + puntuacion + "/" + fechaCreacion;
+		
+				request.open('POST',peticion,true);
+				request.send(null);
+				request.onreadystatechange=alert('Reto creado correctamente');
+				//Borramos el formulario:
+				for (var i=0 ; i<campos.length ; i++){
+					 $(campos[i]).val("");
+				}
+		}else{
+			alert('Todos los campos deben estar'+'\n'+'rellenos para la creación del reto');
 		}
 }
 
