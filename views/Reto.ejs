@@ -4,20 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type='application/javascript' src='/js/funcionesReto.js' ></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="js/comprobar.js" language="JavaScript"> </script>
+<script src="../public/js/comprobar.js" language="JavaScript"> </script>
 <title>Nuevo Reto</title>
 
-<link href="/css/estilosReto.css" rel="stylesheet" type="text/css">
+<link href="css/estilosReto.css" rel="stylesheet" type="text/css">
 </head>
 
 <header>
-    <h1> Nuevo Reto </h1>
+    <h1> Nuevo Reto</h1>
 </header>
 
 <body>
 <div class="formulario">
 
-<form id="formu">
+<div id="prueba">
+</div>
+
+<form id="formu" name="formu">
 
 <fieldset> 
 <legend>Datos del reto</legend>
@@ -25,7 +28,7 @@
 <p class="datos">
     <label>Dificultad del reto</label>
 	<label class="datos">
-          <select class="select-style" name="dificultad" id="dificultad">
+          <select class="select-style" name="dificultad" id="dificultad" onChange="retar()"/>
           <option value="">-Elija dificultad-</option>
           <option value="Baja">Baja</option>
           <option value="Media">Media</option>
@@ -38,7 +41,7 @@
 <p class="datos">
         <label>Categoría del reto</label>
         <label class="datos">
-          <select class="select-style" name="categoria" id="categoria" />
+          <select class="select-style" name="categoria" id="categoria">
           <option value="">-Elija categoría-</option>
           <option value="du">Duelo</option>
           <option value="de">Desafío</option>
@@ -47,8 +50,14 @@
 </p>
 
 <p class="datos">
-	<label for="idR">Id del reto</label>
-	<input id="idR" name="idR" type="text">
+        <label>Id del Reto</label>
+        <label class="datos">
+          <select class="select-style" name="idR" id="idR" onChange="mostrarInfo()">
+          <option value="">-Elija reto-</option>
+          <option value="1"></option>
+          <option value="2"></option>
+          </select>
+        </label>
 </p>
 
 
@@ -60,14 +69,22 @@
 </p>
     
 <p class="datos">
-	<label for="puntuacion">Puntuación de este reto</label>
-    <input id="puntuacion" name="puntuacion" type="text">
+        <label>Puntuación</label>
+        <label class="datos">
+          <select class="select-style" name="puntuacion" id="puntuacion">
+          <option value=""></option>
+          </select>
+        </label>
 </p>    
     
 <p class="datos">
-	<label for="infoReto">Información del reto</label>
-    <input id="infoReto" name="infoReto" type="text">
-</p>   
+        <label>Información del reto</label>
+        <label class="datos">
+          <select class="select-style" name="info" id="info">
+          <option value=""></option>
+          </select>
+        </label>
+</p>  
 
 </fieldset>
 
@@ -116,10 +133,64 @@
 </fieldset>
 <!-- / --------------------------------------------------- -->
 
-<input class="buttom" name="boton" id="boton" value="Crear reto" onClick="retar()" />
+<input class="buttom" name="boton" id="boton" value="Crear reto">
 
 </form>
 </div>
 </body>
 
+<script>
+	
+	function retar() {
+		var valor=document.getElementById('dificultad').value;
+	    var request = new XMLHttpRequest();
+		var peticion_str = 'http://localhost:3000/retar/dificultad/'+valor;
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 ) {
+				if (request.status == 200){
+					console.log(request);
+					var json;
+					datos = eval ( 'json = '+ request.responseText );
+					console.log(json);
+				};
+  			};	
+		 		var i=1;
+				document.formu.idR.options[1]= new Option(datos.reto1.idReto);
+			
+		};
+  		request.send(null);
+		
+		
+	};
+
+	
+	function mostrarInfo() {
+		var valor=document.getElementById('idR').value;
+	    var request = new XMLHttpRequest();
+		var peticion_str = 'http://localhost:3000/retar/puntuacion/info';
+  		request.open('GET', peticion_str , true);
+  		request.onreadystatechange= function(){
+			if ( request.readyState == 4 ) {
+				if (request.status == 200){
+					console.log(request);
+					var json;
+					datos = eval ( 'json = '+ request.responseText );
+					console.log(json);
+				};
+  			};	
+			document.formu.puntuacion.options[0]= new Option(datos.reto1.puntuacion);
+			document.formu.info.options[0]= new Option(datos.reto1.informacion);
+		};
+  		request.send(null);
+		
+		
+	};
+	
+</script>
+
 </html>
+
+
+
+
