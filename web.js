@@ -70,6 +70,10 @@ app.get('/gruposNew',function(req,res){
 	res.render("gruposNew",{});
 });
 
+app.get('/gruposDel',function(req,res){
+	res.render("gruposDel",{});
+});
+
 app.get('/gruposAdComp',function(req,res){
 	res.render("gruposAdComp",{});
 });
@@ -145,7 +149,7 @@ app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:pass
 /*--------------------------------------------------------------*/
 app.post('/crear/:nombre/:admin/:int1/:privacidad/:periodo/:privacidadReto/:fechaCreacion',function(req,res){
 		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('grupos');
-		console.log("Vamos a hacer la inserción");
+		console.log("Vamos a hacer la inserción del grupo");
 		
 		var datos = {'nombre':req.params.nombre,
 		'admin':req.params.admin,
@@ -166,6 +170,33 @@ app.post('/crear/:nombre/:admin/:int1/:privacidad/:periodo/:privacidadReto/:fech
 			 }
 		       );
 });
+
+/*--------------------------------------------------------------*/
+/*					BORRADO DE GRUPOS							*/
+/*--------------------------------------------------------------*/
+app.post('/borrarGrupo/:nombre',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('grupos');
+		console.log("Borrando grupo de la base de datos");
+		db.view('buscarGrupo','buscarGrupo',{key:req.params.nombre},function(error, value) {
+			if (!error) {
+				
+				var resultado = JSON.stringify(value);
+				console.log(resultado);
+				if(value.rows.length == 0){
+					console.log("Grupo no existente");
+					res.send(null);
+				}else{
+					db.destroy(value.rows[0].id,value.rows[0].value,function( error, value) {
+						if (!error) {
+							console.log(JSON.stringify(value));	
+							res.send("ok");
+						}
+					});
+				}
+			}
+		} );
+	});
+	
 /*--------------------------------------------------------------*/
 /*							RANKING								*/
 /*--------------------------------------------------------------*/

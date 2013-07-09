@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="js/funcionesExternas.js"></script>
-<script>     
-	var sesion=null;
+<!-- Funciones extra para el funcionamiento de la página !-->
+<script>      
+   var sesion=null;
    $(document).ready(function() {
 	  cambio('indexNotificaciones','570px');
 	  ranking();
 	  obtSesion();
    });
-   
+    <!-- Control de la sesión !-->
    	function obtSesion(){
 		if (window.XMLHttpRequest) 
 		{ 
@@ -34,11 +35,11 @@
 		};
 		request.send(null);
 	};
-	
+	<!-- Si el usuario tiene un usuario en Gravatar se toma la imagen de ese usuario: !-->
    	function obtenerGravatar(){
 		$('#imUs').attr('src', 'http://www.gravatar.com/avatar/' + md5(sesion.correo));
 	};
-   
+    <!-- Método para cambio de contenido dentro del iframe !-->
 	function cambio(url,s){
 		var iframe=$('#centro');
 		iframe.attr('src',url);
@@ -90,24 +91,32 @@
   </div>
 </div>
  
-<div class="clsImagen" id="clsImagen">           
-  <div class="clsContenedor">                   
-    <div class="clsTitulo" onclick="javascript:cambio('Reto','1000px')">                        
-      <h2>Reto</h2>
-    </div>
-    <div class="clsTitulo" onclick="javascript:cambio('indexGrupos','600px')">                        
-      <h2>Grupo</h2>
-    </div>
-    <div class="clsTitulo" onclick="javascript:cambio('indexAlbum','900px')">                      
-      <h2>Älbum</h2>
-    </div>
-    <div class="clsTitulo">                        
-      <h2>Ranking</h2>
-    </div>
-    <div class="clsTitulo">                        
-      <h2>Opciones</h2>
-    </div>
+<div class="clsImagen" id="clsImagen">
+<!-- Inicio del menú lateral de la página principal !-->
+<div id="menuLat"> M
+  <p></p>
+  E
+  <p></p>
+  N
+  <p></p>
+  U </div>         
+<div class="clsContenedor">                   
+  <div class="clsTitulo" onclick="javascript:cambio('Reto','1000px')">                        
+    <h2>Reto</h2>
   </div>
+  <div class="clsTitulo" onclick="javascript:cambio('indexGrupos','600px')">                        
+    <h2>Grupo</h2>
+  </div>
+  <div class="clsTitulo" onclick="javascript:cambio('indexAlbum','900px')">                      
+    <h2>Älbum</h2>
+  </div>
+  <div class="clsTitulo">                        
+    <h2>Ranking</h2>
+  </div>
+  <div class="clsTitulo">                        
+    <h2>Opciones</h2>
+  </div>
+</div>
 </div>
 <iframe id="centro" class="centroIz" scrolling="no" src="indexNotificaciones"> hola </iframe>
 <div id="buscador">
@@ -124,7 +133,7 @@
   </form>
 </div>
 <div id="lista">
-	<div class="titRank">Ranking Usuarios</div>
+  <div class="titRank">Ranking Usuarios</div>
   <ul>
   </ul>
 </div>

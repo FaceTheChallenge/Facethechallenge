@@ -179,3 +179,8 @@ function obtenValoresGrupo(){
 			alert('Todos los campos deben estar'+'\n'+'rellenos para la creación del grupo');
 		}
 }
+
+//Método para el borrado de un grupo de la base de datos
+function borrarGrupo(){
+	
+	}

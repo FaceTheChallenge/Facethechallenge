@@ -12,6 +12,7 @@
 		$.each(params.buttons,function(name,obj){
 			//Código para los botones:
 			buttonHTML += '<a href="#" class="button '+obj['class']+'">'+name+'<span></span></a>';
+			
 			if(!obj.action){
 				obj.action = function(){};
 			}
@@ -30,8 +31,26 @@
 			i = 0;
 		$.each(params.buttons,function(name,obj){
 			buttons.eq(i++).click(function(){
-				//Cuando se hace el click se llama a la accióna tribuida y se esconde
+				//Cuando se hace el click se llama a la acción atribuida y se esconde
 				//la ventana de confirmación:
+				if(name == 'Si'){
+					//Al confirmar el borrado del grupo hacemos la solicitud:
+					var peticion = "/borrarGrupo/" + $('#grupoDel').val();
+					request.open('POST',peticion,true);
+					//Vemos la respuesta del servidor para informar al usuario:
+					request.onreadystatechange= function(){
+						if ( request.readyState == 4 && request.status == 200) {
+							if(request.responseText=="ok"){
+								alert("Grupo borrado correctamente");
+							}else{
+								alert("Grupo introducido no existe");
+							}
+							//Borramos el formulario:	
+							$('#grupoDel').val("");
+						}
+					}
+					request.send(null);
+				}
 				obj.action();
 				$.confirm.hide();
 				return false;

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Cargamos hojas de estilo y ficheros JavaScript -->
+
+<link href="../public/css/estilosFormulario.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/stylesNotif.css" rel="stylesheet" type="text/css" />
+<link href="../public/css/estilosGrupos.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../public/js/comprobar.js" language="JavaScript"> </script>
+<script src="../public/js/jquery.confirm.js"></script>
+<script src="../public/js/confirmacion.js"></script>
+<link rel="stylesheet" type="text/css" href="../public/css/jquery.confirm.css"/>
+</head>
+
+<body>
+<div  class="form">
+  <fieldset class="grupo" id="opcionesGrupos">
+    <legend> Grupo </legend>
+    <label for="name"> Grupo que se desea eliminar:
+      <input id="grupoDel" class="name" placeholder="Grupo" required="" type="text">
+    </label>
+    <br>
+    <br>
+    <br>
+    <a href="#" class="confirm"><input class="buttom" name="submit" id="borrarGrupo" value="Borrar" type="submit" onClick="borrarGrupo()"></a>
+  </fieldset>
+</div>
+</body>
+</html>
