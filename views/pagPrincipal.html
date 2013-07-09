@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../public/js/funcionesExternas.js"></script>
+<script src="../public/js/comprobar.js" language="JavaScript"> </script>
 <!-- Funciones extra para el funcionamiento de la página !-->
 <script>      
    var sesion=null;
@@ -87,7 +88,7 @@
       <li>Grupo: BASTec</li>
       <li>Puntuacion: 300</li>
     </div>
-    <input id="boton" type="button" value="Perfil"/>
+    <input id="boton" class="button" type="button" value="Perfil" onClick="javascript:obtenerUsuario(sesion.nombreUsuario)"/>
   </div>
 </div>
  

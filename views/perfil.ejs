@@ -6,10 +6,10 @@
 
 <!-- Cargamos hojas de estilo y ficheros JavaScript -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../public/js/comprobar.js" language="JavaScript"> </script>
-<script src="../public/js/funcionesExternas.js" language="JavaScript"> </script>
-<link href="../public/css/estilosFormulario.css" rel="stylesheet" type="text/css">
-<link href="../public/css/estilosPerfil.css" rel="stylesheet" type="text/css">
+<script src="js/comprobar.js" language="JavaScript"> </script>
+<script src="js/funcionesExternas.js" language="JavaScript"> </script>
+<link href="css/estilosFormulario.css" rel="stylesheet" type="text/css">
+<link href="css/estilosPerfil.css" rel="stylesheet" type="text/css">
 <script>
 <!-- Método para cambio de contenido dentro del iframe !-->
 	function cambio(url){
@@ -26,7 +26,7 @@
     <p class="contact">
       <label for="name">Nombre completo</label>
     </p>
-    <input id="nombre" name="name" type="text">
+    <input id="nombre" class="nombre" name="name" type="text">
     <p class="contact">
       <label for="email">Email</label>
     </p>
@@ -83,7 +83,7 @@
       <input id="phone" name="phone"  type="text">
       <br>
       <br>
-  	  <a href="indexNotificaciones.html"><input class="buttom" name="submit" id="submit" value="Volver"/></a>
+  	  <a href="indexNotificaciones"><input class="buttom" name="submit" id="submit" value="Volver"/></a>
       <br>
       <input class="buttom" name="submit" id="submit" value="Guardar" onClick="obtenValores()" />
   </form>

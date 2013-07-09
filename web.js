@@ -102,6 +102,10 @@ app.get('/indexGrupos',function(req,res){
 	res.render("indexGrupos",{});
 });
 
+app.get('/perfil',function(req,res){
+	res.render("perfil",{});
+});
+
 /*--------------------------------------------------------------*/
 /*						SESIONES								*/
 /*--------------------------------------------------------------*/
@@ -144,6 +148,22 @@ app.post('/registrar/:nombre/:sexo/:fechaNacimiento/:correo/:nombreUsuario/:pass
 			 }
 		       );
 });
+
+/*--------------------------------------------------------------*/
+/*						PERFIL DE USUARIOS						*/
+/*--------------------------------------------------------------*/
+app.post('/perfil/:nombre',function(req,res){
+		var db = require("nano")('https://ftchallenge:projectftc@ftchallenge.cloudant.com/').use('usuarios');
+		db.view('buscar','buscarNick',{key:req.params.nombre},function(error, value) {
+			if (!error) {
+				var resultado = JSON.stringify(value);
+				console.log(resultado);
+				//Enviamos el resultado:
+				res.send(resultado);
+			}
+		});
+});
+
 /*--------------------------------------------------------------*/
 /*					CREACIÓN DE GRUPOS							*/
 /*--------------------------------------------------------------*/

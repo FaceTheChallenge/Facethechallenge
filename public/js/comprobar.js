@@ -180,7 +180,27 @@ function obtenValoresGrupo(){
 		}
 }
 
-//Método para el borrado de un grupo de la base de datos
-function borrarGrupo(){
-	
+function cambio(url,s){
+		var iframe=$('#centro');
+		iframe.attr('src',url);
+		iframe.attr('height',s);
+		$('#clsImagen').css('height',s);
 	}
+	
+//Método para obtener los datos de un usuario:
+function obtenerUsuario(nick){
+	//Cambiamos el contenido del iframe:
+	//Versión para el servidor (sin .html):
+	cambio('perfil','700px');
+	//Hacemos la petición:
+	var peticion = "/perfil/" + nick;
+	request.open('POST',peticion,true);
+	//Vemos la respuesta del servidor para informar al usuario:
+	request.onreadystatechange= function(){
+		if ( request.readyState == 4 && request.status == 200) {
+			eval("var objeto = ("+request.responseText+")");
+			alert("Tus datos de perfil actuales son: \nUsuario:  " + objeto.rows[0].key + "\nNombre:  " + objeto.rows[0].value.nombre);		
+		}
+	}
+	request.send(null);
+}
